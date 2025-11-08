@@ -1,0 +1,95 @@
+# ============================================
+# Unity .gitignore (2025 update)
+# Compatible with Unity 2021 LTS – 2025.x
+# ============================================
+
+# Unity generated folders
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+[Rr]ecordings/
+
+# Cache folders
+UserSettings/
+.sysinfo/
+[Bb]ee/
+Artifacts/
+DerivedDataCache/
+
+# Crash and debug files
+sysinfo.txt
+
+# OS generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+Desktop.ini
+
+# IDE specific folders
+.vscode/
+.idea/
+*.sln
+*.csproj
+*.unityproj
+*.pidb
+*.user
+*.userprefs
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+
+# Rider plugin
+[Rr]ider/
+
+# Visual Studio cache directory
+.vs/
+
+# Gradle cache (Android builds)
+.gradle/
+gradle/
+*.gradle
+*.iml
+
+# Build artifacts
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+ExportedObj/
+*.apk
+*.aab
+*.unitypackage
+
+# Asset Store tools
+AssetStoreTools*
+
+# Temporary Auto Backup
+AutoBackup/
+
+# Addressables
+AddressablesData/
+ServerData/
+
+# Collaborate (Plastic SCM)
+.collabignore
+PlasticSCM/
+
+# Other
+*.tmp
+*.bak
+*.orig
+*.patch
+
+#Keep these (important for your project)
+!Assets/
+!Packages/
+!ProjectSettings/
+!README.md
+!.gitignore
