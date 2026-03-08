@@ -33,6 +33,7 @@ public class InputManager : MonoBehaviour
 
     void FixedUpdate()
     {
+        Debug.Log(gameManager.isGamePlay());
         if (gameManager.isGamePlay())
         {
             Vector2 moveInput = onFoot.Movement.ReadValue<Vector2>();

@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverUI;
     public GameObject gameWinUI;
     // public GameObject winUI;
-    private bool gamePlay = false;
+    private bool gamePlay = true;
     private float conditionWin = 10;
     private PlayerInventory playerInventory;
     private void Awake()
@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     }
     public void GameOver()
     {
-        gamePlay = true;
+        gamePlay = false;
         Time.timeScale = 0f;
         gameOverUI.SetActive(true);
     }
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     }
     public void WinGame()
     {
-        gamePlay = true;
+        gamePlay = false;
         Time.timeScale = 0f;
         gameWinUI.SetActive(true);
     }

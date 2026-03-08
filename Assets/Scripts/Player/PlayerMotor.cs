@@ -28,7 +28,7 @@ public class PlayerMotor : MonoBehaviour
         ProcessCrouch();
     }
     public void ProcessMove(Vector2 input)
-    {
+    {   
         if (input.magnitude > 0.1f && isGrounded)
         {
             if (!isMove)
