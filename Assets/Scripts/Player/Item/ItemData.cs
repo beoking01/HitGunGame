@@ -12,4 +12,7 @@ public class ItemData : ScriptableObject
 
     [Header("Behavior")]
     public ItemType itemType;
+
+    [Header("Consumable")]
+    public float healAmount;
 }

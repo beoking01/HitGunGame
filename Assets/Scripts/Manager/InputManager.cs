@@ -7,7 +7,7 @@ public class InputManager : MonoBehaviour
     private PlayerInput.OnFootActions onFoot;
     private PlayerMotor motor;
     private PlayerLook playerLook;
-    private PlayerWeapons playerWeapons;
+    private PlayerItemActionController itemActionController;
     private GameManager gameManager;
 
     public PlayerInput.OnFootActions OnFoot { get => onFoot; set => onFoot = value; }
@@ -19,7 +19,7 @@ public class InputManager : MonoBehaviour
 
         motor = GetComponent<PlayerMotor>();
         playerLook = GetComponent<PlayerLook>();
-        playerWeapons = GetComponent<PlayerWeapons>();
+        itemActionController = GetComponent<PlayerItemActionController>();
 
         gameManager = GameManager.Instance;
 
@@ -27,8 +27,8 @@ public class InputManager : MonoBehaviour
         onFoot.Crouch.performed += ctx => motor.Crouch();
         onFoot.Sprint.performed += ctx => motor.Sprint();
 
-        onFoot.Shoot.performed += ctx => playerWeapons.Shoot();
-        onFoot.Reload.performed += ctx => playerWeapons.Reload();
+        onFoot.Shoot.performed += ctx => itemActionController?.UsePrimary();
+        onFoot.Reload.performed += ctx => itemActionController?.ReloadCurrent();
     }
 
     void FixedUpdate()
