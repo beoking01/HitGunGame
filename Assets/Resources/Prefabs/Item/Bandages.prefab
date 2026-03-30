@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -5186528629954613691}
   - component: {fileID: -9196650767713284786}
   - component: {fileID: 3999880079682126279}
+  - component: {fileID: 5671142567802003842}
   m_Layer: 0
   m_Name: Bandages
   m_TagString: Item
@@ -163,3 +164,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.18983036, y: 0.22866231, z: 0.17765312}
   m_Center: {x: 0, y: 0.11453976, z: 0.0066275895}
+--- !u!114 &5671142567802003842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216043043027239904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 707e1334f5b85c448ab8f19800c15aa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healAmountOverride: 10

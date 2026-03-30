@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4486557864207755758}
   - component: {fileID: 5193641929947842371}
   - component: {fileID: 7632625008116612790}
+  - component: {fileID: 7125355086063040287}
   m_Layer: 0
   m_Name: HealthKit
   m_TagString: Item
@@ -163,3 +164,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.58397615, y: 0.22234996, z: 0.41920847}
   m_Center: {x: 0, y: 0.11046127, z: 0.0039479807}
+--- !u!114 &7125355086063040287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3908186071195390161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 707e1334f5b85c448ab8f19800c15aa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healAmountOverride: 90
