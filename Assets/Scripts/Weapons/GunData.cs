@@ -6,7 +6,7 @@ public class GunData : ScriptableObject
     [Tooltip("Bullet prefab (must have Bullet script & Rigitbody)")]
     public GameObject bulletPreFab;
 
-    [Tooltip("Shots per second (ex: 5 shot/sec)")]
+    [Tooltip("Shots per second")]
     public float fireRate = 5f;
 
     [Tooltip("Number of projectiles per shot ")]
@@ -23,4 +23,6 @@ public class GunData : ScriptableObject
     public float bagAmountSize = 120;
     public float magazine = 30;
     public float reloadTimer = 3;
+    [Header("Optional")]
+    public Vector3 holdPoint;
 }

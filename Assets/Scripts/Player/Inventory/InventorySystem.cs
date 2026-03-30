@@ -10,7 +10,7 @@ public class InventorySystem : MonoBehaviour
     public Action<int> OnSelectedSlotChanged;
 
     [HideInInspector] public Transform objectGrabPointTransform;
-
+    [HideInInspector] public Transform weaponGrabPointTransform;
     private ObjectGrabbable[] slotGrabbables;
 
     private void Awake()
@@ -80,12 +80,18 @@ public class InventorySystem : MonoBehaviour
         for (int i = 0; i < slotGrabbables.Length; i++)
         {
             ObjectGrabbable obj = slotGrabbables[i];
+            ItemData item = slots[i].itemData;
             if (obj == null) continue;
 
             if (i == selectedIndex)
             {
                 obj.gameObject.SetActive(true);
-
+                if (item != null && item.itemType == ItemData.ItemType.Weapon)
+                {
+                    if (weaponGrabPointTransform != null)
+                        obj.Grab(weaponGrabPointTransform);
+                }
+                else
                 if (objectGrabPointTransform != null)
                     obj.Grab(objectGrabPointTransform);
             }

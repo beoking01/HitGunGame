@@ -8,7 +8,6 @@ public class PlayerPickUpDrop : MonoBehaviour
     public Transform dropPoint;
     [SerializeField] private Transform objectGrabPointTransform;
     [SerializeField] private Transform weaponGrabPointTransform;
-
     [Header("Settings")]
     public float pickupDistance = 3f;
     public KeyCode pickupKey = KeyCode.F;
@@ -16,9 +15,12 @@ public class PlayerPickUpDrop : MonoBehaviour
 
     private void Start()
     {
-        if (inventorySystem != null && objectGrabPointTransform != null)
-        {
-            inventorySystem.objectGrabPointTransform = objectGrabPointTransform;
+        if (inventorySystem != null)
+        { 
+            if(weaponGrabPointTransform != null)
+                inventorySystem.weaponGrabPointTransform = weaponGrabPointTransform;
+            if(objectGrabPointTransform != null)
+                inventorySystem.objectGrabPointTransform = objectGrabPointTransform;
         }
     }
 
@@ -65,19 +67,13 @@ public class PlayerPickUpDrop : MonoBehaviour
 
         // Gán object mới vào slot
         inventorySystem.SetSlotGrabbable(index, incomingGrabbable);
-
-        Debug.Log($"Picked up: {pickupItem.itemData.itemName} into slot {index}");
-
-        if(pickupItem.itemData.itemType == ItemData.ItemType.Weapon)
+        if (pickupItem.itemData != null && pickupItem.itemData.itemType == ItemData.ItemType.Weapon)
         {
-            incomingGrabbable.Grab(weaponGrabPointTransform);
-            incomingGrabbable.transform.SetParent(weaponGrabPointTransform);
-            incomingGrabbable.transform.localRotation = Quaternion.Euler(Vector3.zero);
-            incomingGrabbable.transform.localPosition = Vector3.zero;
+            incomingGrabbable.Grab(inventorySystem.weaponGrabPointTransform);
         }
         else
         {
-            incomingGrabbable.Grab(objectGrabPointTransform);
+            incomingGrabbable.Grab(inventorySystem.objectGrabPointTransform);
         }
         
         incomingGrabbable.gameObject.SetActive(true);

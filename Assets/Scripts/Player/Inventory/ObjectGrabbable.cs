@@ -19,7 +19,6 @@ public class ObjectGrabbable : MonoBehaviour {
     public void Grab(Transform grabPoint) {
         this.objectGrabPointTransform = grabPoint;
 
-        objectRigidbody.isKinematic = true;
         objectRigidbody.useGravity = false;
         if (col != null) {
             col.enabled = false;
@@ -30,7 +29,6 @@ public class ObjectGrabbable : MonoBehaviour {
     public void Drop() {
         this.objectGrabPointTransform = null;
 
-        objectRigidbody.isKinematic = false;
         objectRigidbody.useGravity = true;
 
         if (col != null) {
@@ -39,13 +37,16 @@ public class ObjectGrabbable : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        // if (objectGrabPointTransform != null) {
+        if (objectGrabPointTransform != null) {
 
-        //     float lerpSpeed = 40f;
+            float lerpSpeed = 40f;
 
-        //     Vector3 newPosition = Vector3.Lerp(transform.position, objectGrabPointTransform.position, Time.deltaTime * lerpSpeed);
-        //     objectRigidbody.MovePosition(newPosition);
+            Vector3 newPosition = Vector3.Lerp(transform.position, objectGrabPointTransform.position, Time.deltaTime * lerpSpeed);
+            objectRigidbody.MovePosition(newPosition);
 
-        // }
+            Quaternion newRotation = Quaternion.Lerp(transform.rotation, objectGrabPointTransform.rotation, Time.deltaTime * lerpSpeed);
+            objectRigidbody.MoveRotation(newRotation);
+
+        }
     }
 }
