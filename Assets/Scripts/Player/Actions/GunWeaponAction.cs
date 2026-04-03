@@ -130,7 +130,10 @@ public class GunWeaponAction : MonoBehaviour, IWeaponAction, IReloadableAction, 
         if (playerUI == null)
             return;
 
-        
+        if (TryGetAmmoDisplay(out int bulletInMagazineDisplay, out int bulletInBagDisplay))
+            playerUI.SetAmmoDisplay(bulletInMagazineDisplay, bulletInBagDisplay);
+        else
+            playerUI.HideAmmoDisplay();
     }
 
     private Vector3 GetDirectionWithSpread(GunData data, Transform gunBarrel, GameObject user)

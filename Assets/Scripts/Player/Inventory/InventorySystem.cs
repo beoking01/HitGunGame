@@ -126,6 +126,7 @@ public class InventorySystem : MonoBehaviour
             return;
 
         slotGrabbables[index] = obj;
+        OnInventoryChanged?.Invoke();
         UpdateSlotObjects();
     }
 
