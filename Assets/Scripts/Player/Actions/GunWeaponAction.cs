@@ -9,21 +9,18 @@ public interface IAmmoDisplaySource
 public class GunWeaponAction : MonoBehaviour, IWeaponAction, IReloadableAction, IAmmoDisplaySource
 {
     [SerializeField] private WorldGun worldGun;
-    [SerializeField] private BulletPools pools;
 
     private float bulletInMagazine;
     private float bulletInBag;
     private float nextFireTime;
     private bool canShoot = true;
     private float reloadTimer = 3f;
+    private GameObject bulletPrefab;
 
     private void Awake()
     {
         if (worldGun == null)
             worldGun = GetComponent<WorldGun>();
-
-        if (pools == null)
-            pools = GetComponentInChildren<BulletPools>(true);
 
         GunData data = worldGun != null ? worldGun.Data : null;
         if (data == null)
@@ -32,16 +29,27 @@ public class GunWeaponAction : MonoBehaviour, IWeaponAction, IReloadableAction, 
         bulletInMagazine = data.magazine;
         bulletInBag = data.bagAmountSize;
         reloadTimer = data.reloadTimer;
+        bulletPrefab = data.bulletPreFab;
 
-        if (pools != null && pools.bulletPrefab == null && data.bulletPreFab != null)
-            pools.bulletPrefab = data.bulletPreFab;
+        if (bulletPrefab != null)
+            PoolManager.GetOrCreate().Prewarm(bulletPrefab);
     }
 
     public void PrimaryAttack(GameObject user)
     {
         GunData data = worldGun != null ? worldGun.Data : null;
         Transform gunBarrel = worldGun != null ? worldGun.GunBarrel : null;
-        if (data == null || gunBarrel == null || pools == null)
+        if (data == null || gunBarrel == null)
+            return;
+
+        if (bulletPrefab == null)
+            bulletPrefab = data.bulletPreFab;
+
+        if (bulletPrefab == null)
+            return;
+
+        PoolManager poolManager = PoolManager.GetOrCreate();
+        if (poolManager == null)
             return;
 
         if (!canShoot || Time.time < nextFireTime)
@@ -62,7 +70,7 @@ public class GunWeaponAction : MonoBehaviour, IWeaponAction, IReloadableAction, 
         for (int i = 0; i < data.bulletsPershot; i++)
         {
             Vector3 shootDirection = GetDirectionWithSpread(data, gunBarrel, user);
-            GameObject bullet = pools.GetBullet();
+            GameObject bullet = poolManager.Get(bulletPrefab);
             if (bullet == null)
                 return;
 

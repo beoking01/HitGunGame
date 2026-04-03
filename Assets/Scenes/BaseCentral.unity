@@ -119,6 +119,53 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &43621255
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 43621256}
+  - component: {fileID: 43621257}
+  m_Layer: 0
+  m_Name: PoolManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &43621256
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43621255}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2052504033}
+  m_Father: {fileID: 1746691024}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &43621257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43621255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 933dc9240e730db4e8085e2e8fca16ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolRoot: {fileID: 2052504033}
+  defaultWarmSize: 50
 --- !u!4 &105625119 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9129586298950426576, guid: 800d5a7b6c6409a4e98b4e41de63fd4c, type: 3}
@@ -1003,6 +1050,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1934717621497289188, guid: 800d5a7b6c6409a4e98b4e41de63fd4c, type: 3}
+      propertyPath: ammoText
+      value: 
+      objectReference: {fileID: 1827180715}
     - target: {fileID: 2482285222676264246, guid: 800d5a7b6c6409a4e98b4e41de63fd4c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1277,7 +1328,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8234442753287658621, guid: 800d5a7b6c6409a4e98b4e41de63fd4c, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 320
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 8914252339016284367, guid: 800d5a7b6c6409a4e98b4e41de63fd4c, type: 3}
       propertyPath: m_LocalScale.x
@@ -1852,8 +1903,20 @@ Transform:
   - {fileID: 1699050271}
   - {fileID: 855355752}
   - {fileID: 1289330106}
+  - {fileID: 43621256}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1827180715 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8554647239336094212, guid: 800d5a7b6c6409a4e98b4e41de63fd4c, type: 3}
+  m_PrefabInstance: {fileID: 1100918798}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2027751858
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1872,7 +1935,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5738456080911321149, guid: a35b8c32acba1334b9b31dfe8cdbc9be, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.422
       objectReference: {fileID: 0}
     - target: {fileID: 5738456080911321149, guid: a35b8c32acba1334b9b31dfe8cdbc9be, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1940,7 +2003,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   worldGun: {fileID: 2027751862}
-  pools: {fileID: 1680582927}
 --- !u!114 &2027751862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1998,6 +2060,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1746691024}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2052504032
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2052504033}
+  m_Layer: 0
+  m_Name: PoolRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2052504033
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052504032}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 43621256}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2091507348 stripped
 MonoBehaviour:
