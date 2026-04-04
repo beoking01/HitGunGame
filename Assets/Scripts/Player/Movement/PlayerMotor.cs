@@ -34,9 +34,9 @@ public class PlayerMotor : MonoBehaviour
             if (!isMove)
             {   
                 if(speed == 5)
-                    SoundManager.Instance.PlayLoop("Walk");
+                    SoundManager.Instance?.PlayLoop("Walk");
                 if (speed == 8)
-                    SoundManager.Instance.PlayLoop("Run");
+                    SoundManager.Instance?.PlayLoop("Run");
                 isMove = true;
             }
         }
@@ -44,7 +44,7 @@ public class PlayerMotor : MonoBehaviour
         {
             if (isMove)
             {
-                SoundManager.Instance.StopLoop();
+                SoundManager.Instance?.StopLoop();
                 isMove = false;
             }
         }
@@ -92,7 +92,7 @@ public class PlayerMotor : MonoBehaviour
     {
         if (isGrounded)
         {
-            SoundManager.Instance.PlaySound("Jump");
+            SoundManager.Instance?.PlaySound("Jump");
             playerVelocity.y = Mathf.Sqrt(jumpHight * -3.0f * gravirty);
         }
     }
