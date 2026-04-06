@@ -91,6 +91,7 @@ public class TruckStateManager : MonoBehaviour
         {
             items = truckState.CopyAll()
         };
+        Debug.Log("Saving TruckState to disk at " + SavePath + " with " + payload.items.Count + " items.");
 
         string json = JsonUtility.ToJson(payload, true);
         File.WriteAllText(SavePath, json);
@@ -111,6 +112,8 @@ public class TruckStateManager : MonoBehaviour
 
         if (payload == null || payload.items == null)
             return;
+
+        Debug.Log("Loading TruckState from disk at " + SavePath + " with " + payload.items.Count + " items.");
 
         for (int i = 0; i < payload.items.Count; i++)
         {

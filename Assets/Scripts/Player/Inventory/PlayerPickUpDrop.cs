@@ -52,7 +52,7 @@ public class PlayerPickUpDrop : MonoBehaviour
         if (!hit.collider.TryGetComponent(out ObjectGrabbable incomingGrabbable))
             return;
 
-        DetachFromTruckIfNeeded(incomingGrabbable);
+        DetachFromContainerIfNeeded(incomingGrabbable);
 
         int index = inventorySystem.selectedIndex;
 
@@ -116,7 +116,7 @@ public class PlayerPickUpDrop : MonoBehaviour
         obj.Drop();
     }
 
-    private void DetachFromTruckIfNeeded(ObjectGrabbable grabbable)
+    private void DetachFromContainerIfNeeded(ObjectGrabbable grabbable)
     {
         if (grabbable == null)
             return;
@@ -126,9 +126,16 @@ public class PlayerPickUpDrop : MonoBehaviour
             return;
 
         TruckCargoZone cargoZone = grabbable.GetComponentInParent<TruckCargoZone>();
-        if (cargoZone == null)
+        if (cargoZone != null)
+        {
+            cargoZone.RemoveItemFromTruck(lootItem);
             return;
+        }
 
-        cargoZone.RemoveItemFromTruck(lootItem);
+        RoomPlacementZone roomZone = grabbable.GetComponentInParent<RoomPlacementZone>();
+        if (roomZone != null)
+        {
+            roomZone.RemoveItemFromRoom(lootItem);
+        }
     }
 }

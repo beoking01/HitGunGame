@@ -1,3 +1,10 @@
 - Cơ chế hoạt động của Truck
 + Lưu lại đồ vật qua mỗi sence 
 + Đang bị đẩy về root Cargo(Mong muốn giữ nguyên thực tế)
+
+- Cơ chế di chuyển.
++ Người chơi có thể bám vào các vách tường để đi ra ngoài map
++ 1 số tòa nhà có thể đi xuyên
+
+- Cơ chế lưu lại đồ vật ở căn cứ
++ Người chơi lấy đồ vật từ truck ra và để lại vào Căn cứ
