@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89e0b70744b5da64db460c2fee2a2cd4, type: 3}
+  m_Name: ItemPrefabDatabase
+  m_EditorClassIdentifier: 
+  entries:
+  - itemId: HealthKit
+    worldPrefab: {fileID: 3908186071195390161, guid: 99522760dea2fad49830d37037ed51e6, type: 3}
+    itemData: {fileID: 11400000, guid: eb7ed53ff9267394eb33db8cb42b5d28, type: 2}
+  - itemId: Medkit
+    worldPrefab: {fileID: 7888358981939075044, guid: f281bc33191a33d48aaa6b157ebaa913, type: 3}
+    itemData: {fileID: 11400000, guid: 6c03fa6fbe35c654f8c9375f45f573bb, type: 2}
+  - itemId: Bandages
+    worldPrefab: {fileID: 216043043027239904, guid: b2ca064993d295c48bc82d03be79531a, type: 3}
+    itemData: {fileID: 11400000, guid: ee62d190e26615f45bc1673dab343682, type: 2}
+  - itemId: AmmoCase
+    worldPrefab: {fileID: 6370764775388150225, guid: ea99e1f78d567fd43a874e5fceb5fcc2, type: 3}
+    itemData: {fileID: 11400000, guid: 473bf5f1c9a3cca4691d460146d5e9ce, type: 2}
+  - itemId: AmmoCrate
+    worldPrefab: {fileID: 3865046510475189310, guid: ca1d9972fb474d344813f4b28cdd8c6f, type: 3}
+    itemData: {fileID: 11400000, guid: e65c4e862192d5c47834c6ab555a432f, type: 2}
+  - itemId: Binocuilars
+    worldPrefab: {fileID: 2762118618844980087, guid: 0b66a1f6c8572284ebf762d382ef7c83, type: 3}
+    itemData: {fileID: 11400000, guid: 9f67ac2cc4418114b8ff02782a87c4fa, type: 2}
+  - itemId: Briefcase
+    worldPrefab: {fileID: 3134781517799910824, guid: 034c9d399c992d343aedc9cf38d46122, type: 3}
+    itemData: {fileID: 11400000, guid: 41c14c6e5f929e84b8965c03a4a8ded0, type: 2}
+  - itemId: Briefcase
+    worldPrefab: {fileID: 1302653162635948795, guid: 71b64d729f2131044bccc1fb512fa4d0, type: 3}
+    itemData: {fileID: 11400000, guid: 41c14c6e5f929e84b8965c03a4a8ded0, type: 2}
+  - itemId: GasCan
+    worldPrefab: {fileID: 3308128273212304377, guid: 11e41fba02e6d28459e8104ef84bcb1a, type: 3}
+    itemData: {fileID: 11400000, guid: 9fdef471bb4df76459af04d91f61ab70, type: 2}
+  - itemId: M4A1
+    worldPrefab: {fileID: 5786097810451525583, guid: 260ff1508afea5241b6511d8fbe92201, type: 3}
+    itemData: {fileID: 11400000, guid: bd21fa0e5350cc44bb508ebc8e054e1e, type: 2}
+  - itemId: SkedgeHammer
+    worldPrefab: {fileID: 5425647893693064783, guid: 3882c90189b37724aa690cbd45dd02d2, type: 3}
+    itemData: {fileID: 11400000, guid: ad576a7e127b5bc46b3112377cdd10f2, type: 2}
+  - itemId: USB
+    worldPrefab: {fileID: 4965438261709640327, guid: a35b8c32acba1334b9b31dfe8cdbc9be, type: 3}
+    itemData: {fileID: 11400000, guid: ea4bdcd1fcf29cc45ad4dfb07febabeb, type: 2}
+  - itemId: SmartPhone
+    worldPrefab: {fileID: 2833228722276984126, guid: f193c0694f6c77141b8317c4fb5d55e1, type: 3}
+    itemData: {fileID: 11400000, guid: cab2265c4ca64c549aa8e5b11ac343de, type: 2}
+  - itemId: TV
+    worldPrefab: {fileID: 7738744186548441550, guid: 80872c6dd156f544788e44da2ac91219, type: 3}
+    itemData: {fileID: 11400000, guid: 7ba9685bb6a877540aa3a52921dc80d4, type: 2}
+  - itemId: ScrewDriver
+    worldPrefab: {fileID: 0}
+    itemData: {fileID: 11400000, guid: cb10c7bdd69dc4b42b3d80f6d4542d26, type: 2}
+  - itemId: ToolBox
+    worldPrefab: {fileID: 4337980536727441498, guid: 59acd335cbd226f44ade069d962cfb82, type: 3}
+    itemData: {fileID: 11400000, guid: 99f602f52e53ffb4dab1d8420db21149, type: 2}
+  - itemId: ToolBox
+    worldPrefab: {fileID: 4337980536727441498, guid: 59acd335cbd226f44ade069d962cfb82, type: 3}
+    itemData: {fileID: 11400000, guid: 99f602f52e53ffb4dab1d8420db21149, type: 2}
+  - itemId: ToolBox
+    worldPrefab: {fileID: 4337980536727441498, guid: 59acd335cbd226f44ade069d962cfb82, type: 3}
+    itemData: {fileID: 11400000, guid: 99f602f52e53ffb4dab1d8420db21149, type: 2}
+  - itemId: ToolBox
+    worldPrefab: {fileID: 4337980536727441498, guid: 59acd335cbd226f44ade069d962cfb82, type: 3}
+    itemData: {fileID: 11400000, guid: 99f602f52e53ffb4dab1d8420db21149, type: 2}

@@ -1,0 +1,3 @@
+- Cơ chế hoạt động của Truck
++ Lưu lại đồ vật qua mỗi sence 
++ Đang bị đẩy về root Cargo(Mong muốn giữ nguyên thực tế)

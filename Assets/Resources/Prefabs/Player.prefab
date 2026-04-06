@@ -34,6 +34,7 @@ Transform:
   m_Children:
   - {fileID: 2482285222676264246}
   - {fileID: 3749465680330247406}
+  - {fileID: 2633526273124437565}
   m_Father: {fileID: 5934398581291599445}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &8234442753287658621
@@ -1627,7 +1628,7 @@ RectTransform:
   m_GameObject: {fileID: 2953809461934150137}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6, y: 3.5, z: 0}
+  m_LocalScale: {x: 1.6, y: 3.8, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8914252339016284367}
@@ -1886,6 +1887,37 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &4381248960282675824
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2633526273124437565}
+  m_Layer: 0
+  m_Name: WeaponGrapPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2633526273124437565
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4381248960282675824}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.559, y: -0.41499996, z: 0.4170003}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9129586298950426576}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4467875321853188608
 GameObject:
   m_ObjectHideFlags: 0
@@ -1913,7 +1945,7 @@ RectTransform:
   m_GameObject: {fileID: 4467875321853188608}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6, y: 3.5, z: 0}
+  m_LocalScale: {x: 1.6, y: 3.8, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8914252339016284367}
@@ -2685,7 +2717,7 @@ RectTransform:
   m_GameObject: {fileID: 5792356991761044954}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6, y: 3.5, z: 0}
+  m_LocalScale: {x: 1.6, y: 3.8, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8914252339016284367}
@@ -2896,7 +2928,7 @@ RectTransform:
   m_GameObject: {fileID: 6169605916871383209}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6, y: 3.5, z: 0}
+  m_LocalScale: {x: 1.6, y: 3.8, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8914252339016284367}
@@ -3182,6 +3214,7 @@ GameObject:
   - component: {fileID: 4652294030477286260}
   - component: {fileID: 3257845586255243759}
   - component: {fileID: 8853019393503088346}
+  - component: {fileID: 2971365432088208760}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3426,11 +3459,24 @@ MonoBehaviour:
   inventorySystem: {fileID: 8783696570839193232}
   dropPoint: {fileID: 6861389637117024668}
   objectGrabPointTransform: {fileID: 6861389637117024668}
-  weaponGrabPointTransform: {fileID: 3749465680330247406}
+  weaponGrabPointTransform: {fileID: 2633526273124437565}
   pickupDistance: 3
   pickupKey: 102
   dropKey: 103
 --- !u!114 &8853019393503088346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7356560666630595867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7284e46a42ea5c4d9b0181f201314e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventorySystem: {fileID: 8783696570839193232}
+--- !u!114 &2971365432088208760
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3637,7 +3683,7 @@ RectTransform:
   m_GameObject: {fileID: 8426059145932653015}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6, y: 3.5, z: 0}
+  m_LocalScale: {x: 1.6, y: 3.8, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8914252339016284367}

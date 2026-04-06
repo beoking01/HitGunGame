@@ -153,6 +153,8 @@ GameObject:
   - component: {fileID: 666996207096581487}
   - component: {fileID: 2433800487822224194}
   - component: {fileID: 6535613895235285305}
+  - component: {fileID: 2212734919281756214}
+  - component: {fileID: 7087747486556233267}
   m_Layer: 0
   m_Name: Weapon_01
   m_TagString: Item
@@ -253,6 +255,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.022021728, y: 0.15560086, z: 0.23462796}
   m_Center: {x: -0.00094199926, y: 0.013344385, z: 0.0733643}
+--- !u!114 &2212734919281756214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4965438261709640327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b16d6ac1f2e27414099824eaa923b06f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldGun: {fileID: 7087747486556233267}
+--- !u!114 &7087747486556233267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4965438261709640327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 421a9236fa4f1374ca1955ca63aa8f75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 18a17d7eee98b184781eec826ee8eba7, type: 2}
+  gunBarrel: {fileID: 5025096390310709757}
 --- !u!1 &6650470630134122455
 GameObject:
   m_ObjectHideFlags: 0

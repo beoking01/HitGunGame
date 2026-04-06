@@ -52,6 +52,8 @@ public class PlayerPickUpDrop : MonoBehaviour
         if (!hit.collider.TryGetComponent(out ObjectGrabbable incomingGrabbable))
             return;
 
+        DetachFromTruckIfNeeded(incomingGrabbable);
+
         int index = inventorySystem.selectedIndex;
 
         // Nếu slot hiện tại đã có item/object thì thả object cũ ra ngoài trước
@@ -112,5 +114,21 @@ public class PlayerPickUpDrop : MonoBehaviour
         obj.transform.position = targetPoint.position;
         obj.transform.rotation = targetPoint.rotation;
         obj.Drop();
+    }
+
+    private void DetachFromTruckIfNeeded(ObjectGrabbable grabbable)
+    {
+        if (grabbable == null)
+            return;
+
+        LootItem lootItem = grabbable.GetComponent<LootItem>();
+        if (lootItem == null)
+            return;
+
+        TruckCargoZone cargoZone = grabbable.GetComponentInParent<TruckCargoZone>();
+        if (cargoZone == null)
+            return;
+
+        cargoZone.RemoveItemFromTruck(lootItem);
     }
 }
