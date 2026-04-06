@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [DisallowMultipleComponent]
@@ -58,10 +59,16 @@ public class TruckCargoRebuilder : MonoBehaviour
                 continue;
             }
 
-            GameObject spawned = Instantiate(prefab, cargoRoot);
-            spawned.transform.localPosition = state.localPosition;
-            spawned.transform.localRotation = state.localRotation;
-            spawned.transform.localScale = state.localScale;
+            Vector3 spawnWorldPosition = cargoRoot.TransformPoint(state.localPosition);
+            Quaternion spawnWorldRotation = cargoRoot.rotation * state.localRotation;
+
+            GameObject spawned = Instantiate(prefab, spawnWorldPosition, spawnWorldRotation, cargoRoot);
+            ApplyLocalTransform(spawned.transform, state);
+            ApplyCargoPhysics(spawned);
+
+            // Re-apply once after Update and once after physics to prevent other systems
+            // from briefly resetting spawned items to cargo root.
+            StartCoroutine(ReapplyTransformAfterSpawn(spawned.transform, state));
 
             LootItem lootItem = spawned.GetComponent<LootItem>();
             if (lootItem == null)
@@ -83,5 +90,54 @@ public class TruckCargoRebuilder : MonoBehaviour
                 worldItem.itemData = itemData;
             }
         }
+    }
+
+    private void ApplyLocalTransform(Transform target, TruckItemState state)
+    {
+        if (target == null || state == null)
+            return;
+
+        target.localPosition = state.localPosition;
+        target.localRotation = state.localRotation;
+        target.localScale = state.localScale;
+    }
+
+    private void ApplyCargoPhysics(GameObject spawned)
+    {
+        if (spawned == null)
+            return;
+
+        Rigidbody rb = spawned.GetComponent<Rigidbody>();
+        if (rb == null)
+            return;
+
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+
+        // if (!applyInCargoPhysics)
+        // {
+        //     rb.useGravity = false;
+        //     rb.isKinematic = true;
+        // }
+
+        rb.Sleep();
+    }
+
+    private IEnumerator ReapplyTransformAfterSpawn(Transform target, TruckItemState state)
+    {
+        if (target == null || state == null)
+            yield break;
+
+        yield return null;
+        if (target == null)
+            yield break;
+
+        ApplyLocalTransform(target, state);
+
+        yield return new WaitForFixedUpdate();
+        if (target == null)
+            yield break;
+
+        ApplyLocalTransform(target, state);
     }
 }

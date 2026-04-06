@@ -41,12 +41,14 @@ public class TruckStateManager : MonoBehaviour
         if (lootItem == null || cargoRoot == null)
             return;
 
+        bool isChildOfCargo = lootItem.transform.IsChildOf(cargoRoot);
+
         TruckItemState state = new TruckItemState
         {
             cargoItemId = lootItem.CargoItemId,
             itemId = lootItem.ItemId,
-            localPosition = cargoRoot.InverseTransformPoint(lootItem.transform.position),
-            localRotation = Quaternion.Inverse(cargoRoot.rotation) * lootItem.transform.rotation,
+            localPosition = isChildOfCargo ? lootItem.transform.localPosition : cargoRoot.InverseTransformPoint(lootItem.transform.position),
+            localRotation = isChildOfCargo ? lootItem.transform.localRotation : Quaternion.Inverse(cargoRoot.rotation) * lootItem.transform.rotation,
             localScale = lootItem.transform.localScale
         };
 
@@ -87,6 +89,8 @@ public class TruckStateManager : MonoBehaviour
 
     public void SaveToDisk()
     {
+        CaptureRuntimeSnapshotIfPossible();
+
         TruckSavePayload payload = new TruckSavePayload
         {
             items = truckState.CopyAll()
@@ -126,6 +130,15 @@ public class TruckStateManager : MonoBehaviour
         if (saveOnApplicationQuit)
         {
             SaveToDisk();
+        }
+    }
+
+    private void CaptureRuntimeSnapshotIfPossible()
+    {
+        TruckCargoZone cargoZone = FindFirstObjectByType<TruckCargoZone>();
+        if (cargoZone != null)
+        {
+            cargoZone.CaptureSnapshotNow();
         }
     }
 

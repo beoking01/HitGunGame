@@ -23,25 +23,12 @@ public class TruckCargoZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag(itemTag))
-            return;
+        TryRegisterOrUpdateCargoItem(other, true);
+    }
 
-        LootItem lootItem = GetOrAddLootItem(other.gameObject);
-        EnsureItemId(lootItem, other.GetComponent<WorldItem>());
-
-        if (!lootItem.HasValidItemId)
-        {
-            Debug.LogWarning("TruckCargoZone: Missing itemId, cannot store item state.");
-            return;
-        }
-
-        other.transform.SetParent(cargoRoot, true);
-
-
-        if (TruckStateManager.Instance != null)
-        {
-            TruckStateManager.Instance.UpsertFromCargo(lootItem, cargoRoot);
-        }
+    private void OnTriggerStay(Collider other)
+    {
+        TryRegisterOrUpdateCargoItem(other, false);
     }
 
     private void OnDisable()
@@ -104,6 +91,34 @@ public class TruckCargoZone : MonoBehaviour
         if (!string.IsNullOrEmpty(fallbackItemId))
         {
             lootItem.SetItemId(fallbackItemId);
+        }
+    }
+
+    private void TryRegisterOrUpdateCargoItem(Collider other, bool setParentToCargo)
+    {
+        if (other == null || !other.CompareTag(itemTag))
+            return;
+
+        LootItem lootItem = GetOrAddLootItem(other.gameObject);
+        EnsureItemId(lootItem, other.GetComponent<WorldItem>());
+
+        if (!lootItem.HasValidItemId)
+        {
+            if (setParentToCargo)
+            {
+                Debug.LogWarning("TruckCargoZone: Missing itemId, cannot store item state.");
+            }
+            return;
+        }
+
+        if (setParentToCargo)
+        {
+            other.transform.SetParent(cargoRoot, true);
+        }
+
+        if (TruckStateManager.Instance != null)
+        {
+            TruckStateManager.Instance.UpsertFromCargo(lootItem, cargoRoot);
         }
     }
 }
