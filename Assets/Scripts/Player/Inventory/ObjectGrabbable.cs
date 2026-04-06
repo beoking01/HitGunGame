@@ -24,6 +24,8 @@ public class ObjectGrabbable : MonoBehaviour {
             col.enabled = false;
         }
 
+        SetLayerRecursively(transform, LayerMask.NameToLayer("Weapon"));
+
     }
 
     public void Drop() {
@@ -33,6 +35,16 @@ public class ObjectGrabbable : MonoBehaviour {
 
         if (col != null) {
             col.enabled = true;
+        }
+
+        SetLayerRecursively(transform, LayerMask.NameToLayer("Default"));
+    }
+
+    private void SetLayerRecursively(Transform root, int layer) {
+        root.gameObject.layer = layer;
+
+        for (int i = 0; i < root.childCount; i++) {
+            SetLayerRecursively(root.GetChild(i), layer);
         }
     }
 
