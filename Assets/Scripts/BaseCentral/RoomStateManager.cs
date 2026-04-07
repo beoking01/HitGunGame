@@ -45,16 +45,35 @@ public class RoomStateManager : MonoBehaviour
         if (!lootItem.HasValidItemId)
             return;
 
+        bool isChildOfRoom = lootItem.transform.IsChildOf(roomRoot);
+
         RoomItemState state = new RoomItemState
         {
             placementId = lootItem.CargoItemId,
             itemId = lootItem.ItemId,
-            localPosition = roomRoot.InverseTransformPoint(lootItem.transform.position),
-            localRotation = Quaternion.Inverse(roomRoot.rotation) * lootItem.transform.rotation,
-            localScale = lootItem.transform.localScale
+            localPosition = isChildOfRoom ? lootItem.transform.localPosition : roomRoot.InverseTransformPoint(lootItem.transform.position),
+            localRotation = isChildOfRoom ? lootItem.transform.localRotation : Quaternion.Inverse(roomRoot.rotation) * lootItem.transform.rotation,
+            localScale = isChildOfRoom ? lootItem.transform.localScale : ToLocalScale(lootItem.transform.lossyScale, roomRoot.lossyScale)
         };
 
         roomState.Upsert(state);
+    }
+
+    private static Vector3 ToLocalScale(Vector3 worldScale, Vector3 parentWorldScale)
+    {
+        return new Vector3(
+            SafeDivide(worldScale.x, parentWorldScale.x),
+            SafeDivide(worldScale.y, parentWorldScale.y),
+            SafeDivide(worldScale.z, parentWorldScale.z)
+        );
+    }
+
+    private static float SafeDivide(float value, float divisor)
+    {
+        if (Mathf.Approximately(divisor, 0f))
+            return value;
+
+        return value / divisor;
     }
 
     public void CaptureSnapshot(Transform roomRoot)

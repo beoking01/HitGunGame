@@ -8,3 +8,4 @@
 
 - Cơ chế lưu lại đồ vật ở căn cứ
 + Người chơi lấy đồ vật từ truck ra và để lại vào Căn cứ
++ Đang lỗi scale đồ vật

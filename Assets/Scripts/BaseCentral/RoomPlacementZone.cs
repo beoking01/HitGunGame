@@ -23,12 +23,12 @@ public class RoomPlacementZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        TryRegisterItem(other);
+        TryRegisterOrUpdateRoomItem(other, true);
     }
 
     private void OnTriggerStay(Collider other)
     {
-        TryRegisterItem(other);
+        TryRegisterOrUpdateRoomItem(other, false);
     }
 
     private void OnDisable()
@@ -62,7 +62,7 @@ public class RoomPlacementZone : MonoBehaviour
         }
     }
 
-    private void TryRegisterItem(Collider other)
+    private void TryRegisterOrUpdateRoomItem(Collider other, bool setParentToRoom)
     {
         if (other == null || !other.CompareTag(itemTag))
             return;
@@ -72,11 +72,17 @@ public class RoomPlacementZone : MonoBehaviour
 
         if (!lootItem.HasValidItemId)
         {
-            Debug.LogWarning("RoomPlacementZone: Missing itemId, cannot store room state.");
+            if (setParentToRoom)
+            {
+                Debug.LogWarning("RoomPlacementZone: Missing itemId, cannot store room state.");
+            }
             return;
         }
 
-        other.transform.SetParent(roomRoot, true);
+        if (setParentToRoom)
+        {
+            other.transform.SetParent(roomRoot, true);
+        }
 
         if (RoomStateManager.Instance != null)
         {

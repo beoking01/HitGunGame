@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [DisallowMultipleComponent]
@@ -6,8 +7,10 @@ public class RoomLayoutRebuilder : MonoBehaviour
     [SerializeField] private Transform roomRoot;
     [SerializeField] private ItemPrefabDatabase prefabDatabase;
     [SerializeField] private bool clearExistingChildren = true;
+    [SerializeField] private bool rebuildOnStart = true;
+    [SerializeField] private bool reapplyTransformAfterSpawn = true;
 
-    private bool rebuilt;
+    private Coroutine rebuildCoroutine;
 
     private void Reset()
     {
@@ -22,61 +25,118 @@ public class RoomLayoutRebuilder : MonoBehaviour
 
     private void Start()
     {
-        Rebuild();
+        if (rebuildOnStart)
+            Rebuild();
     }
 
     public void Rebuild()
     {
-        if (rebuilt)
+        if (!isActiveAndEnabled)
             return;
 
-        rebuilt = true;
+        if (rebuildCoroutine != null)
+            StopCoroutine(rebuildCoroutine);
 
-        if (RoomStateManager.Instance == null || prefabDatabase == null || roomRoot == null)
-            return;
+        rebuildCoroutine = StartCoroutine(RebuildRoutine());
+    }
+
+    private IEnumerator RebuildRoutine()
+    {
+        RoomStateManager manager = RoomStateManager.Instance;
+
+        if (roomRoot == null || prefabDatabase == null || manager == null || manager.State == null || manager.State.Items == null)
+            yield break;
 
         if (clearExistingChildren)
         {
             for (int i = roomRoot.childCount - 1; i >= 0; i--)
             {
-                Destroy(roomRoot.GetChild(i).gameObject);
+                Transform child = roomRoot.GetChild(i);
+                if (child != null)
+                    Destroy(child.gameObject);
             }
+
+            // Đợi 1 frame để tránh object cũ và mới chồng nhau trong cùng frame.
+            yield return null;
         }
 
-        var items = RoomStateManager.Instance.State.Items;
+        var items = manager.State.Items;
+        int count = items.Count;
 
-        for (int i = 0; i < items.Count; i++)
+        for (int i = 0; i < count; i++)
         {
             RoomItemState state = items[i];
             if (state == null)
                 continue;
 
-            if (!prefabDatabase.TryGetPrefab(state.itemId, out GameObject prefab))
+            if (!prefabDatabase.TryGetPrefab(state.itemId, out GameObject prefab) || prefab == null)
             {
-                Debug.LogWarning("RoomLayoutRebuilder: Missing prefab for itemId " + state.itemId);
+                Debug.LogWarning($"RoomLayoutRebuilder: Missing prefab for itemId {state.itemId}");
                 continue;
             }
 
-            GameObject spawned = Instantiate(prefab, roomRoot);
-            spawned.transform.localPosition = state.localPosition;
-            spawned.transform.localRotation = state.localRotation;
-            spawned.transform.localScale = state.localScale;
+            GameObject spawned = Instantiate(prefab, roomRoot, false);
+            Transform spawnedTransform = spawned.transform;
 
-            LootItem lootItem = spawned.GetComponent<LootItem>();
-            if (lootItem == null)
-                lootItem = spawned.AddComponent<LootItem>();
+            ApplyLocalTransform(spawnedTransform, state);
 
-            lootItem.SetItemId(state.itemId);
-            lootItem.SetCargoItemId(state.placementId);
+            if (reapplyTransformAfterSpawn)
+                StartCoroutine(ReapplyTransformAfterSpawn(spawnedTransform, state));
 
-            WorldItem worldItem = spawned.GetComponent<WorldItem>();
-            if (worldItem == null)
-                worldItem = spawned.AddComponent<WorldItem>();
-
-            if (prefabDatabase.TryGetItemData(state.itemId, out ItemData itemData))
-            {
-                worldItem.itemData = itemData;
-            }
+            SetupLootItem(spawned, state);
+            SetupWorldItem(spawned, state);
         }
+
+        rebuildCoroutine = null;
+    }
+
+    private static void ApplyLocalTransform(Transform target, RoomItemState state)
+    {
+        if (target == null || state == null)
+            return;
+
+        target.localPosition = state.localPosition;
+        target.localRotation = state.localRotation;
+        target.localScale = state.localScale;
+    }
+
+    private IEnumerator ReapplyTransformAfterSpawn(Transform target, RoomItemState state)
+    {
+        if (target == null || state == null)
+            yield break;
+
+        yield return null;
+
+        if (target == null)
+            yield break;
+
+        ApplyLocalTransform(target, state);
+
+        yield return new WaitForFixedUpdate();
+
+        if (target == null)
+            yield break;
+
+        ApplyLocalTransform(target, state);
+    }
+
+    private void SetupLootItem(GameObject spawned, RoomItemState state)
+    {
+        LootItem lootItem = spawned.GetComponent<LootItem>();
+        if (lootItem == null)
+            lootItem = spawned.AddComponent<LootItem>();
+
+        lootItem.SetItemId(state.itemId);
+        lootItem.SetCargoItemId(state.placementId);
+    }
+
+    private void SetupWorldItem(GameObject spawned, RoomItemState state)
+    {
+        WorldItem worldItem = spawned.GetComponent<WorldItem>();
+        if (worldItem == null)
+            worldItem = spawned.AddComponent<WorldItem>();
+
+        if (prefabDatabase.TryGetItemData(state.itemId, out ItemData itemData))
+            worldItem.itemData = itemData;
     }
 }
