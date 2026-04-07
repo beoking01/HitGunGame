@@ -78,65 +78,14 @@ public class RoomLayoutRebuilder : MonoBehaviour
             GameObject spawned = Instantiate(prefab, roomRoot, false);
             Transform spawnedTransform = spawned.transform;
 
-            ApplyLocalTransform(spawnedTransform, state);
+            ItemRuntimeUtility.ApplyLocalTransform(spawnedTransform, state.localPosition, state.localRotation, state.localScale);
 
             if (reapplyTransformAfterSpawn)
-                StartCoroutine(ReapplyTransformAfterSpawn(spawnedTransform, state));
+                StartCoroutine(ItemRuntimeUtility.ReapplyTransformAfterSpawn(spawnedTransform, state.localPosition, state.localRotation, state.localScale));
 
-            SetupLootItem(spawned, state);
-            SetupWorldItem(spawned, state);
+            ItemRuntimeUtility.SetupLootAndWorldItem(spawned, state.itemId, state.placementId, prefabDatabase);
         }
 
         rebuildCoroutine = null;
-    }
-
-    private static void ApplyLocalTransform(Transform target, RoomItemState state)
-    {
-        if (target == null || state == null)
-            return;
-
-        target.localPosition = state.localPosition;
-        target.localRotation = state.localRotation;
-        target.localScale = state.localScale;
-    }
-
-    private IEnumerator ReapplyTransformAfterSpawn(Transform target, RoomItemState state)
-    {
-        if (target == null || state == null)
-            yield break;
-
-        yield return null;
-
-        if (target == null)
-            yield break;
-
-        ApplyLocalTransform(target, state);
-
-        yield return new WaitForFixedUpdate();
-
-        if (target == null)
-            yield break;
-
-        ApplyLocalTransform(target, state);
-    }
-
-    private void SetupLootItem(GameObject spawned, RoomItemState state)
-    {
-        LootItem lootItem = spawned.GetComponent<LootItem>();
-        if (lootItem == null)
-            lootItem = spawned.AddComponent<LootItem>();
-
-        lootItem.SetItemId(state.itemId);
-        lootItem.SetCargoItemId(state.placementId);
-    }
-
-    private void SetupWorldItem(GameObject spawned, RoomItemState state)
-    {
-        WorldItem worldItem = spawned.GetComponent<WorldItem>();
-        if (worldItem == null)
-            worldItem = spawned.AddComponent<WorldItem>();
-
-        if (prefabDatabase.TryGetItemData(state.itemId, out ItemData itemData))
-            worldItem.itemData = itemData;
     }
 }

@@ -63,43 +63,15 @@ public class TruckCargoRebuilder : MonoBehaviour
             Quaternion spawnWorldRotation = cargoRoot.rotation * state.localRotation;
 
             GameObject spawned = Instantiate(prefab, spawnWorldPosition, spawnWorldRotation, cargoRoot);
-            ApplyLocalTransform(spawned.transform, state);
+            ItemRuntimeUtility.ApplyLocalTransform(spawned.transform, state.localPosition, state.localRotation, state.localScale);
             ApplyCargoPhysics(spawned);
 
             // Re-apply once after Update and once after physics to prevent other systems
             // from briefly resetting spawned items to cargo root.
-            StartCoroutine(ReapplyTransformAfterSpawn(spawned.transform, state));
+            StartCoroutine(ItemRuntimeUtility.ReapplyTransformAfterSpawn(spawned.transform, state.localPosition, state.localRotation, state.localScale));
 
-            LootItem lootItem = spawned.GetComponent<LootItem>();
-            if (lootItem == null)
-                lootItem = spawned.AddComponent<LootItem>();
-
-            lootItem.SetItemId(state.itemId);
-            lootItem.SetCargoItemId(state.cargoItemId);
-
-            if (applyInCargoPhysics)
-            {
-            }
-
-            WorldItem worldItem = spawned.GetComponent<WorldItem>();
-            if (worldItem == null)
-                worldItem = spawned.AddComponent<WorldItem>();
-
-            if (prefabDatabase.TryGetItemData(state.itemId, out ItemData itemData))
-            {
-                worldItem.itemData = itemData;
-            }
+            ItemRuntimeUtility.SetupLootAndWorldItem(spawned, state.itemId, state.cargoItemId, prefabDatabase);
         }
-    }
-
-    private void ApplyLocalTransform(Transform target, TruckItemState state)
-    {
-        if (target == null || state == null)
-            return;
-
-        target.localPosition = state.localPosition;
-        target.localRotation = state.localRotation;
-        target.localScale = state.localScale;
     }
 
     private void ApplyCargoPhysics(GameObject spawned)
@@ -123,21 +95,4 @@ public class TruckCargoRebuilder : MonoBehaviour
         rb.Sleep();
     }
 
-    private IEnumerator ReapplyTransformAfterSpawn(Transform target, TruckItemState state)
-    {
-        if (target == null || state == null)
-            yield break;
-
-        yield return null;
-        if (target == null)
-            yield break;
-
-        ApplyLocalTransform(target, state);
-
-        yield return new WaitForFixedUpdate();
-        if (target == null)
-            yield break;
-
-        ApplyLocalTransform(target, state);
-    }
 }

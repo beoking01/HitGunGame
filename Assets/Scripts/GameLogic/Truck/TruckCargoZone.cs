@@ -62,45 +62,13 @@ public class TruckCargoZone : MonoBehaviour
         }
     }
 
-    private LootItem GetOrAddLootItem(GameObject itemObject)
-    {
-        LootItem lootItem = itemObject.GetComponent<LootItem>();
-        if (lootItem == null)
-            lootItem = itemObject.AddComponent<LootItem>();
-
-        lootItem.EnsureCargoItemId();
-        return lootItem;
-    }
-
-    private void EnsureItemId(LootItem lootItem, WorldItem worldItem)
-    {
-        if (lootItem == null || lootItem.HasValidItemId)
-            return;
-
-        if (worldItem == null || worldItem.itemData == null)
-            return;
-
-        if (prefabDatabase != null && prefabDatabase.TryFindIdByItemData(worldItem.itemData, out string mappedItemId))
-        {
-            lootItem.SetItemId(mappedItemId);
-            return;
-        }
-
-        // Fallback id keeps cargo state usable even before database mapping is fully configured.
-        string fallbackItemId = worldItem.itemData.name;
-        if (!string.IsNullOrEmpty(fallbackItemId))
-        {
-            lootItem.SetItemId(fallbackItemId);
-        }
-    }
-
     private void TryRegisterOrUpdateCargoItem(Collider other, bool setParentToCargo)
     {
         if (other == null || !other.CompareTag(itemTag))
             return;
 
-        LootItem lootItem = GetOrAddLootItem(other.gameObject);
-        EnsureItemId(lootItem, other.GetComponent<WorldItem>());
+        LootItem lootItem = ItemRuntimeUtility.GetOrAddLootItem(other.gameObject);
+        ItemRuntimeUtility.EnsureItemId(lootItem, other.GetComponent<WorldItem>(), prefabDatabase);
 
         if (!lootItem.HasValidItemId)
         {
