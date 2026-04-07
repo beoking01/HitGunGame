@@ -86,11 +86,10 @@ public class TruckCargoRebuilder : MonoBehaviour
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
 
-        // if (!applyInCargoPhysics)
-        // {
-        //     rb.useGravity = false;
-        //     rb.isKinematic = true;
-        // }
+        if (!applyInCargoPhysics)
+        {
+            rb.isKinematic = true;
+        }
 
         rb.Sleep();
     }

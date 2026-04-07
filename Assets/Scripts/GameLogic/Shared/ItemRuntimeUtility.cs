@@ -86,4 +86,21 @@ public static class ItemRuntimeUtility
 
         ApplyLocalTransform(target, localPosition, localRotation, localScale);
     }
+
+    public static Vector3 ToLocalScale(Vector3 worldScale, Vector3 parentWorldScale)
+    {
+        return new Vector3(
+            SafeDivide(worldScale.x, parentWorldScale.x),
+            SafeDivide(worldScale.y, parentWorldScale.y),
+            SafeDivide(worldScale.z, parentWorldScale.z)
+        );
+    }
+
+    private static float SafeDivide(float value, float divisor)
+    {
+        if (Mathf.Approximately(divisor, 0f))
+            return value;
+
+        return value / divisor;
+    }
 }

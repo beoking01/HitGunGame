@@ -588,7 +588,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -161.99998}
+  m_AnchoredPosition: {x: 0, y: -162}
   m_SizeDelta: {x: 0, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &77187277369892485
@@ -3178,11 +3178,9 @@ GameObject:
   - component: {fileID: 1898561077054099709}
   - component: {fileID: 1934717621497289188}
   - component: {fileID: 5213542720503561781}
-  - component: {fileID: 361134395930193772}
   - component: {fileID: 4652294030477286260}
-  - component: {fileID: 3257845586255243759}
   - component: {fileID: 8853019393503088346}
-  - component: {fileID: 2971365432088208760}
+  - component: {fileID: 6682955197821116751}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3383,22 +3381,6 @@ MonoBehaviour:
   overlay: {fileID: 4880876739808573865}
   duration: 2
   fadeSpeeds: 0.5
---- !u!114 &361134395930193772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7356560666630595867}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06b8cd5aa2a5aa2438a465dab4e9fc44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 892052881ebed8346a2f3738ab134422, type: 2}
-  gunBarrel: {fileID: 2608557957931498013}
-  pools: {fileID: 0}
-  bulletDisplay: {fileID: 8554647239336094212}
 --- !u!114 &4652294030477286260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3411,26 +3393,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508f176399a8d6e4cade52a8c719bee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3257845586255243759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7356560666630595867}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7869e460bddf76c42b702d74170e7cb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCamera: {fileID: 5432783240171627595}
-  inventorySystem: {fileID: 8783696570839193232}
-  dropPoint: {fileID: 6861389637117024668}
-  objectGrabPointTransform: {fileID: 6861389637117024668}
-  weaponGrabPointTransform: {fileID: 2633526273124437565}
-  pickupDistance: 3
-  pickupKey: 102
-  dropKey: 103
 --- !u!114 &8853019393503088346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3444,7 +3406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventorySystem: {fileID: 8783696570839193232}
---- !u!114 &2971365432088208760
+--- !u!114 &6682955197821116751
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3453,10 +3415,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 7356560666630595867}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7284e46a42ea5c4d9b0181f201314e8, type: 3}
+  m_Script: {fileID: 11500000, guid: ec651a6d8051618498b7cbc0e059fd28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCamera: {fileID: 5432783240171627595}
   inventorySystem: {fileID: 8783696570839193232}
+  dropPoint: {fileID: 6861389637117024668}
+  objectGrabPointTransform: {fileID: 6861389637117024668}
+  weaponGrabPointTransform: {fileID: 2633526273124437565}
+  pickupDistance: 3
+  pickupKey: 102
+  dropKey: 103
 --- !u!1 &7372382246667511942
 GameObject:
   m_ObjectHideFlags: 0
@@ -4010,10 +3979,5 @@ PrefabInstance:
 --- !u!4 &2482285222676264246 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8301305685890527852, guid: a2835473a674a3549a3ad8ac8e39d8d9, type: 3}
-  m_PrefabInstance: {fileID: 5856633107825723226}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &2608557957931498013 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8463817775649455431, guid: a2835473a674a3549a3ad8ac8e39d8d9, type: 3}
   m_PrefabInstance: {fileID: 5856633107825723226}
   m_PrefabAsset: {fileID: 0}
