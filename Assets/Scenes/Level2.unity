@@ -315,7 +315,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promtText: {fileID: 506166529}
+  ammoText: {fileID: 0}
   pointText: {fileID: 1633134676}
+  inventorySystem: {fileID: 0}
 --- !u!114 &41991966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1877,6 +1879,8 @@ MonoBehaviour:
   - name: Jump
     audioClip: {fileID: 8300000, guid: a57f3af2aacc0c843b530fc5b68ab528, type: 3}
     volume: 1
+  audioSource: {fileID: 0}
+  audioLoop: {fileID: 0}
 --- !u!82 &513988837
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2034,8 +2038,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766f8ce66d93d0747ba607bea30b4c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverUI: {fileID: 1849633656}
-  gameWinUI: {fileID: 458941519}
 --- !u!4 &569504354
 Transform:
   m_ObjectHideFlags: 0
@@ -5320,6 +5322,7 @@ Transform:
   - {fileID: 615112532}
   - {fileID: 623644262}
   - {fileID: 947896784}
+  - {fileID: 1997455686}
   m_Father: {fileID: 1239746683}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1208564626
@@ -8081,7 +8084,6 @@ Transform:
   - {fileID: 1367718734}
   - {fileID: 576629130}
   - {fileID: 932694844}
-  - {fileID: 1997455686}
   m_Father: {fileID: 1754196621}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1985895185
@@ -8327,7 +8329,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.81153, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1864319240}
+  m_Father: {fileID: 1208564625}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1997455687
 MonoBehaviour:

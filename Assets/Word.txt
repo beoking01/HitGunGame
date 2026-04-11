@@ -1,3 +1,63 @@
+Chủ đề: bạn đang trong 1 tổ chức, ngoài mặt là thành viên nhưng đang bị kiểm soát bởi thuốc độc, 
+cần phải liều mạng đi kiếm tiền để đổi lấy thuốc giải từng ngày. 
+Người chơi có thể chọn những màn chơi bình thường để kiếm tiền 
+hoặc lựa chọn tham gia các màn chơi đặc biệt (các màn này sẽ có thuốc giải)
+Bất cứ khi nào tham gia các màn chơi đặc biệt thì sẽ tăng độ khó của các màn chơi bình thường lên
+(Khiến cho người chơi phải tham gia các màn chơi bình thường để tích lũy tài nguyên)
+=> Người chơi có thể lựa chọn tàng tàng kiếm tiền qua ngày bình thường (càng dùng nhiều thuốc giải thì hiệu quả lại càng giảm).
+hoặc tham gia vào nhiều màn đặc biệt -> tiền tới màn boss cuối cùng để đánh cắp thuốc, kiểm soát tổ chức.
+
+Cơ chế độc:
+    - Sẽ bị trừ máu tối đa.
+    - Độc sẽ mạnh lên theo thời gian (Sau mỗi 1 ngày thì tăng lên).
+    - Uống càng nhiều thuốc giải thì thuốc giải càng bị mất hiệu lực.
+
+
+Cơ chế màn chơi
+    - Nếu người chơi bị chết trong quá trình chơi thì toàn bộ đồ vật khi màn về truck sẽ bị mất và trở về basecentral.
+        + Chết sẽ làm tăng trầm trọng tình trạng độc
+    - Giới hạn thời gian màn chơi: Người chơi sẽ có thời gian từ 11:00 pm đến 7:00 am (trong game cho mỗi vòng chơi) (tương đương với 5-10p ngoài thực)
+        + Sau thời gian này sẽ bị BOT dễ dàng phát hiện hơn.
+    - Mực độ màn chơi:
+        + 3 mức độ cho màn chơi bình thường
+        + Người chơi có thể chơi lại các mức độ nhưng sẽ giảm tỉ lệ xuất hiện đồ và tăng tỷ lệ đồ bị hỏng(Đồ hỏng thì giảm giá trị tiền khi bán)
+        + Màn chơi đặc biệt sẽ xuất hiện khi hoàn thành mức độ 3 của 1 màn chơi bình thường.
+    
+Cơ chế thuốc độc
+    - Sau mỗi 
+Người chơi bắt đầu từ Basecentral
+    - Khởi động màn chơi.
+    -> Người chơi di chuyển đến Máy tính trong truck
+    -> tương tác với Máy tính
+    -> chọn màn chơi
+    -> Loadscene màn chơi đã chọn
+
+    - Bắt đầu 1 màn chơi
+    -> Người chơi sẽ xuất phát từ vị trí trong xe tải
+    -> Người chơi sẽ di chuyển xung quanh giới hạn của map
+    -> Tìm kiếm đồ vật trong các công trình và mang trở về truck
+    -> Trong lúc tìm kiếm đồ vật thì người chơi sẽ phải chiến đấ/tránh mặt những con BOT.
+    -> Người chơi phải mang đồ vật về Truck thì mới có thể mang trở về Basecentral
+
+Trở về Basecentral
+    Các tương các của người chơi ở base
+    -> Người chơi xuất phát từ vị trí trong Truck
+        + Bán đồ vật
+        -> Người chơi mang đồ vật đến vị trí bán 
+        -> Đặt đồ vật vào thùng bán đồ
+        -> Nhấn nút bán
+        -> Đồ vật được bán được chuyển ra tiền.
+        +  Lưu trữ đồ vật
+        -> Người chơi mang đồ vật vào trong kho 
+        -> mục đích bán đồ vật với các combo/(đã sửa chứa) thì có giá trị cao hơn
+    
+        + Mua vật phẩm
+        -> Người chơi tiến đến vị trí máy tính ở truck
+        -> Tương tác với máy trình
+        -> Chọn Shop
+        -> Lựa chọn vật phẩm
+
+
 - Cơ chế hoạt động của Truck
 + Lưu lại đồ vật qua mỗi sence 
 + Đang bị đẩy về root Cargo(Mong muốn giữ nguyên thực tế)
