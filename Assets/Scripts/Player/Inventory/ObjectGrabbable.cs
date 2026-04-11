@@ -20,6 +20,13 @@ public class ObjectGrabbable : MonoBehaviour {
         this.objectGrabPointTransform = grabPoint;
 
         objectRigidbody.useGravity = false;
+        objectRigidbody.isKinematic = true; 
+
+        // Biến vật thể thành con của điểm cầm
+        transform.SetParent(grabPoint);
+        // Gán vị trí và góc xoay về 0 để khớp hoàn toàn với điểm cầm
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
         if (col != null) {
             col.enabled = false;
         }
@@ -32,7 +39,9 @@ public class ObjectGrabbable : MonoBehaviour {
         this.objectGrabPointTransform = null;
 
         objectRigidbody.useGravity = true;
-
+        objectRigidbody.isKinematic = false; 
+        transform.SetParent(null);
+        
         if (col != null) {
             col.enabled = true;
         }
@@ -48,17 +57,10 @@ public class ObjectGrabbable : MonoBehaviour {
         }
     }
 
-    private void FixedUpdate() {
+    private void LateUpdate() {
         if (objectGrabPointTransform != null) {
-
-            float lerpSpeed = 40f;
-
-            Vector3 newPosition = Vector3.Lerp(transform.position, objectGrabPointTransform.position, Time.deltaTime * lerpSpeed);
-            objectRigidbody.MovePosition(newPosition);
-
-            Quaternion newRotation = Quaternion.Lerp(transform.rotation, objectGrabPointTransform.rotation, Time.deltaTime * lerpSpeed);
-            objectRigidbody.MoveRotation(newRotation);
-
+            transform.position = objectGrabPointTransform.position;
+            transform.rotation = objectGrabPointTransform.rotation;
         }
     }
 }

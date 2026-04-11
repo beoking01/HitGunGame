@@ -54,9 +54,6 @@ public class PlayerPickUpDrop : MonoBehaviour
 
         DetachFromContainerIfNeeded(incomingGrabbable);
 
-        // Always detach from any parent before grabbing so scale is not inherited from room/truck roots.
-        // incomingGrabbable.transform.SetParent(null, true);
-
         int index = inventorySystem.selectedIndex;
 
         // Nếu slot hiện tại đã có item/object thì thả object cũ ra ngoài trước
@@ -99,7 +96,6 @@ public class PlayerPickUpDrop : MonoBehaviour
 
         if (current != null)
         {
-            current.transform.SetParent(null); // Bỏ cha trước khi thả
             DropObjectToWorld(current);
         }
 
