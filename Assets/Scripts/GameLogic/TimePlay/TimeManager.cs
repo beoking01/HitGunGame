@@ -4,9 +4,11 @@ using TMPro;
 public class TimeManager : MonoBehaviour
 {
     public TextMeshProUGUI timeText;
+    [SerializeField] private Transform agreeGrationPoint;
     private float currentTime;
     private LevelTimeSetting currentSettings;
     private bool isTimeStopped = false;
+    private bool hasSentTimeExpiredNotice = false;
 
     void Start()
     {
@@ -15,6 +17,7 @@ public class TimeManager : MonoBehaviour
         {
             currentTime = currentSettings.startHour;
             isTimeStopped = false;
+            hasSentTimeExpiredNotice = false;
         }
     }
 
@@ -24,23 +27,50 @@ public class TimeManager : MonoBehaviour
 
         if (!isTimeStopped)
         {
-            // Sử dụng Mathf.MoveTowards để tiến dần về đích mà không vượt quá
+            float previousTime = currentTime;
             float nextTime = currentTime + Time.deltaTime * currentSettings.timeSpeed;
             
-            // Xử lý bước nhảy qua 24h (Ví dụ từ 23h sáng 0h)
             if (nextTime >= 24f) nextTime -= 24f;
 
             currentTime = nextTime;
 
-            // Kiểm tra xem đã chạm mốc endHour chưa (dùng sai số nhỏ 0.01 để so sánh)
-            if (Mathf.Abs(currentTime - currentSettings.endHour) < 0.1f)
+            if (HasReachedEndHour(previousTime, currentTime, currentSettings.endHour))
             {
                 currentTime = currentSettings.endHour;
                 isTimeStopped = true;
             }
         }
 
+        if (isTimeStopped && !hasSentTimeExpiredNotice)
+        {
+            NotifyEnemiesTimeExpired();
+        }
+
         UpdateUI();
+    }
+
+    private bool HasReachedEndHour(float previous, float current, float endHour)
+    {
+        if (Mathf.Approximately(previous, current))
+            return false;
+
+        if (previous < current)
+            return endHour >= previous && endHour <= current;
+
+        return endHour >= previous || endHour <= current;
+    }
+
+
+    private void NotifyEnemiesTimeExpired()
+    {
+        if (EnemyManager.Instance == null)
+            return;
+
+        if (agreeGrationPoint == null)
+            return;
+
+        EnemyManager.Instance.NotifyTimeExpired(agreeGrationPoint.position);
+        hasSentTimeExpiredNotice = true;
     }
 
     void UpdateUI()
@@ -57,7 +87,6 @@ public class TimeManager : MonoBehaviour
         // Xử lý hiệu ứng nhấp nháy đỏ khi dừng
         if (isTimeStopped)
         {
-            // Sử dụng hàm sin hoặc PingPong để tạo hiệu ứng nhấp nháy mượt mà
             float alpha = Mathf.PingPong(Time.time * 2f, 1f); 
             timeText.color = Color.Lerp(Color.white, Color.red, alpha);
         }

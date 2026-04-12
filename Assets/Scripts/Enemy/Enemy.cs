@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IEnemyObserver
 {
     private StateMachine stateMachine;
     private NavMeshAgent agent;
@@ -27,6 +27,23 @@ public class Enemy : MonoBehaviour
     public BulletPools pools;
     [SerializeField] private string currentState;
     private EnemyAbility[] enemyAbilities;
+    private bool isObserverRegistered;
+
+    void OnEnable()
+    {
+        TryRegisterObserver();
+    }
+
+    void OnDisable()
+    {
+        // Keep observer subscription while disabled so this enemy can be re-activated by global events.
+    }
+
+    void OnDestroy()
+    {
+        TryUnregisterObserver();
+    }
+
     void Start()
     {
         stateMachine = GetComponent<StateMachine>();
@@ -43,6 +60,8 @@ public class Enemy : MonoBehaviour
         enemyAbilities = GetComponents<EnemyAbility>();
         foreach (var ab in enemyAbilities)
             ab.Initialise(this);
+
+        TryRegisterObserver();
     }
 
     void Update()
@@ -51,8 +70,46 @@ public class Enemy : MonoBehaviour
         currentState = stateMachine.activeState.ToString();
         foreach (var ability in enemyAbilities)
             ability.Perform();
-        if (enemyHealth.IsDeath()) Destroy(gameObject);
+        if (enemyHealth.IsDeath()) gameObject.SetActive(false);
     }
+
+    private void TryRegisterObserver()
+    {
+        if (isObserverRegistered || EnemyManager.Instance == null)
+            return;
+
+        EnemyManager.Instance.Subscribe(this);
+        isObserverRegistered = true;
+    }
+
+    private void TryUnregisterObserver()
+    {
+        if (!isObserverRegistered)
+            return;
+
+        if (EnemyManager.Instance != null)
+            EnemyManager.Instance.Unsubscribe(this);
+
+        isObserverRegistered = false;
+    }
+
+    public void OnTimeExpired(Vector3 playerPosition)
+    {
+        if (!gameObject.activeSelf)
+            gameObject.SetActive(true);
+
+        if (enemyHealth != null && enemyHealth.IsDeath())
+            enemyHealth.Revive(enemyData.maxHealth);
+
+        LastKnowPos = playerPosition;
+
+        if (stateMachine != null)
+            stateMachine.ChangeState(new SearchState());
+
+        if (agent != null && agent.isOnNavMesh)
+            agent.SetDestination(LastKnowPos);
+    }
+
     public bool CanSeePlayer()
     {
         if (player != null)
@@ -84,5 +141,4 @@ public class Enemy : MonoBehaviour
         }
         return false;
     }
-
 }

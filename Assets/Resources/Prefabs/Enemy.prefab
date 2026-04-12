@@ -1261,6 +1261,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Weapon
       objectReference: {fileID: 0}
+    - target: {fileID: 3592435288848690731, guid: a2835473a674a3549a3ad8ac8e39d8d9, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3678207595868781192, guid: a2835473a674a3549a3ad8ac8e39d8d9, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.052691497
@@ -1272,6 +1276,14 @@ PrefabInstance:
     - target: {fileID: 3678207595868781192, guid: a2835473a674a3549a3ad8ac8e39d8d9, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.052691497
+      objectReference: {fileID: 0}
+    - target: {fileID: 3999004531126365689, guid: a2835473a674a3549a3ad8ac8e39d8d9, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4053326519934033970, guid: a2835473a674a3549a3ad8ac8e39d8d9, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8301305685890527852, guid: a2835473a674a3549a3ad8ac8e39d8d9, type: 3}
       propertyPath: m_LocalPosition.x

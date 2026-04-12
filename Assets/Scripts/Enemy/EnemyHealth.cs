@@ -87,5 +87,22 @@ public class EnemyHealth : MonoBehaviour
     {
         maxHealth = tmp;
         health = maxHealth;
+        isDeath = false;
+        lerpTimer = 0f;
+    }
+
+    public void Revive(float newMaxHealth)
+    {
+        maxHealth = newMaxHealth;
+        health = maxHealth;
+        isDeath = false;
+        giveDamege = true;
+        lerpTimer = 0f;
+
+        if (frontHealthBar != null)
+            frontHealthBar.fillAmount = 1f;
+
+        if (backHealthBar != null)
+            backHealthBar.fillAmount = 1f;
     }
 }

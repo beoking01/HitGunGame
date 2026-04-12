@@ -27910,7 +27910,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startHour: 23
   endHour: 8
-  timeSpeed: 0.05
+  timeSpeed: 0.01
 --- !u!4 &779358009
 Transform:
   m_ObjectHideFlags: 0
@@ -53966,7 +53966,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4011154634136190685, guid: 800d5a7b6c6409a4e98b4e41de63fd4c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.77
+      value: 1.22
       objectReference: {fileID: 0}
     - target: {fileID: 4011154634136190685, guid: 800d5a7b6c6409a4e98b4e41de63fd4c, type: 3}
       propertyPath: m_LocalPosition.z
