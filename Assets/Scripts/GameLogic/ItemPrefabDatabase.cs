@@ -124,4 +124,20 @@ public class ItemPrefabDatabase : ScriptableObject
 
         return false;
     }
+    public void GetAllItemIds(List<Entry> output)
+    {
+        if (output == null)
+            return;
+
+        output.Clear();
+
+        for (int i = 0; i < entries.Count; i++)
+        {
+            Entry entry = entries[i];
+            if (entry == null || string.IsNullOrEmpty(entry.itemId))
+                continue;
+
+            output.Add(entry);
+        }
+    }
 }

@@ -7,9 +7,8 @@ using System.Collections.Generic;
 public class ComputerUI : MonoBehaviour, IPointObserver
 {
     [SerializeField] private TextMeshProUGUI pointsText;
-    [Header("Danh sách tất cả các Panels")]
-    public List<GameObject> allPanels;
-
+    [SerializeField] private ItemPrefabDatabase prefabDatabase;
+    [SerializeField] private Transform itemSpawnRoot;
     private void Start()
     {
         PointManager.Instance.AddObserver(this);
@@ -32,11 +31,15 @@ public class ComputerUI : MonoBehaviour, IPointObserver
         if (pointsText != null)
             pointsText.text = $"{points:F2}";
     }
-    public void BuyProcess(float price)
+    public void Buy(string itemId)
     {
+        ItemData itemData = null;
+        prefabDatabase.TryGetItemData(itemId, out itemData);
+        float price = itemData.price ;
         if (PointManager.Instance.Points >= price)
         {
             PointManager.Instance.AddPoints(-price);
+            BuyProcess(itemId);
             Debug.Log("Purchase successful!");
         }
         else
@@ -44,13 +47,17 @@ public class ComputerUI : MonoBehaviour, IPointObserver
             Debug.Log("Not enough points to purchase.");
         }
     }
-    // Hàm này sẽ được gọi khi bấm nút
-    public void OpenPanel(int panelIndex)
+    private void BuyProcess(string itemId)
     {
-        for (int i = 0; i < allPanels.Count; i++)
+        if (prefabDatabase == null || itemSpawnRoot == null)
+            return;
+
+        if (!prefabDatabase.TryGetPrefab(itemId, out GameObject prefab))
         {
-            // Nếu i trùng với index truyền vào thì hiện, ngược lại thì ẩn
-            allPanels[i].SetActive(i == panelIndex);
+            Debug.LogWarning("ComputerUI: Missing prefab for itemId " + itemId);
+            return;
         }
+
+        Instantiate(prefab, itemSpawnRoot);
     }
 }

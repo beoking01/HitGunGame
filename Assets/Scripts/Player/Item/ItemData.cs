@@ -9,6 +9,7 @@ public class ItemData : ScriptableObject
 
     [Header("Economy")]
     public float price;
+    public float sellPrice;
 
     [Header("Behavior")]
     public ItemType itemType;

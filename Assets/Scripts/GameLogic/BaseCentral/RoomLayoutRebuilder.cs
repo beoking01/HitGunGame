@@ -9,6 +9,7 @@ public class RoomLayoutRebuilder : MonoBehaviour
     [SerializeField] private bool clearExistingChildren = true;
     [SerializeField] private bool rebuildOnStart = true;
     [SerializeField] private bool reapplyTransformAfterSpawn = true;
+    [SerializeField] private bool applyInCargoPhysics = true;
 
     private Coroutine rebuildCoroutine;
 
@@ -79,7 +80,8 @@ public class RoomLayoutRebuilder : MonoBehaviour
             Transform spawnedTransform = spawned.transform;
 
             ItemRuntimeUtility.ApplyLocalTransform(spawnedTransform, state.localPosition, state.localRotation, state.localScale);
-
+            
+            ApplyCargoPhysics(spawned);
             if (reapplyTransformAfterSpawn)
                 StartCoroutine(ItemRuntimeUtility.ReapplyTransformAfterSpawn(spawnedTransform, state.localPosition, state.localRotation, state.localScale));
 
@@ -87,5 +89,24 @@ public class RoomLayoutRebuilder : MonoBehaviour
         }
 
         rebuildCoroutine = null;
+    }
+    private void ApplyCargoPhysics(GameObject spawned)
+    {
+        if (spawned == null)
+            return;
+
+        Rigidbody rb = spawned.GetComponent<Rigidbody>();
+        if (rb == null)
+            return;
+
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+
+        if (!applyInCargoPhysics)
+        {
+            rb.isKinematic = true;
+        }
+
+        rb.Sleep();
     }
 }

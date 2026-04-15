@@ -31,7 +31,7 @@ public class SellZone : MonoBehaviour
         {
             if (item != null && item.itemData != null)
             {
-                float price = item.itemData.price;
+                float price = item.itemData.sellPrice;
                 // Thêm điểm vào PointManager
                 PointManager.Instance.AddPoints(price);
                 // Hủy vật phẩm sau khi bán
