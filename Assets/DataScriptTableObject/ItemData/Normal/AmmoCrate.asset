@@ -15,3 +15,6 @@ MonoBehaviour:
   itemName: AmmoCrate
   itemIcon: {fileID: 21300000, guid: 44721a3c5bf610e4ebf3ce1835530104, type: 3}
   price: 300
+  sellPrice: 250
+  itemType: 0
+  healAmount: 0

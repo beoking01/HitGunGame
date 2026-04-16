@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: SkedgeHammer
   m_EditorClassIdentifier: 
   itemName: SkedgeHammer
-  itemIcon: {fileID: 21300000, guid: 44721a3c5bf610e4ebf3ce1835530104, type: 3}
-  price: 10
+  itemIcon: {fileID: 21300000, guid: a110a464ac3d30b44934f7e34269a014, type: 3}
+  price: 100
+  sellPrice: 20
+  itemType: 1
+  healAmount: 0

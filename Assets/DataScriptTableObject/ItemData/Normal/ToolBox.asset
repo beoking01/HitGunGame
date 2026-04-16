@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: ToolBox
   itemIcon: {fileID: 21300000, guid: 44721a3c5bf610e4ebf3ce1835530104, type: 3}
-  price: 30
+  price: 190
+  sellPrice: 10
+  itemType: 0
+  healAmount: 0
