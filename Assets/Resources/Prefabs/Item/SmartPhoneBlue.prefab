@@ -15,7 +15,9 @@ GameObject:
   - component: {fileID: -473773539808999111}
   - component: {fileID: -4446325106973396951}
   - component: {fileID: -5162517848076277401}
-  m_Layer: 0
+  - component: {fileID: -4006375793988645440}
+  - component: {fileID: -129416267114555243}
+  m_Layer: 6
   m_Name: SmartPhoneBlue
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -163,3 +165,32 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.12942278, y: 0.2650847, z: 0.03227611}
   m_Center: {x: 0, y: 0.13182725, z: -0.0000000055879354}
+--- !u!114 &-4006375793988645440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68758043584702942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22553fd63f2361041a6a888dbc9c247e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useEvents: 1
+  promtMessage: 
+--- !u!114 &-129416267114555243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68758043584702942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a4589037c41b9479cd202ee0d36779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []

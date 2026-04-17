@@ -15,7 +15,9 @@ GameObject:
   - component: {fileID: 7427980322134527036}
   - component: {fileID: -2637896033140100021}
   - component: {fileID: -5267993280072389425}
-  m_Layer: 0
+  - component: {fileID: -8573040950043610479}
+  - component: {fileID: -6699087747714164432}
+  m_Layer: 6
   m_Name: Briefcase
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -163,3 +165,32 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.7071317, y: 0.6331761, z: 0.16312522}
   m_Center: {x: 0, y: 0.31656814, z: -0.000000011175871}
+--- !u!114 &-8573040950043610479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3134781517799910824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22553fd63f2361041a6a888dbc9c247e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useEvents: 1
+  promtMessage: 
+--- !u!114 &-6699087747714164432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3134781517799910824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a4589037c41b9479cd202ee0d36779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []

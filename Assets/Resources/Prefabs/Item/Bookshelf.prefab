@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 2732979294641512231}
   - component: {fileID: 146799618494704621}
   - component: {fileID: 4025008813413694409}
-  m_Layer: 0
+  - component: {fileID: 6889081234618021704}
+  - component: {fileID: 1080467918705862762}
+  m_Layer: 6
   m_Name: Bookshelf
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -114,3 +116,32 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6889081234618021704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804101809923787320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22553fd63f2361041a6a888dbc9c247e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useEvents: 1
+  promtMessage: 
+--- !u!114 &1080467918705862762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804101809923787320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a4589037c41b9479cd202ee0d36779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []

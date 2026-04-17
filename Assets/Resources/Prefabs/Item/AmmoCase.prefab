@@ -15,7 +15,9 @@ GameObject:
   - component: {fileID: -7158689873495046467}
   - component: {fileID: 1767450403674033964}
   - component: {fileID: 7480637213753844418}
-  m_Layer: 0
+  - component: {fileID: -1158610909675104353}
+  - component: {fileID: -6230843901571104367}
+  m_Layer: 6
   m_Name: AmmoCase
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -163,3 +165,32 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5353142, y: 0.37174222, z: 0.26034126}
   m_Center: {x: 0, y: 0.18796082, z: -0.000000014901161}
+--- !u!114 &-1158610909675104353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6370764775388150225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22553fd63f2361041a6a888dbc9c247e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useEvents: 1
+  promtMessage: 
+--- !u!114 &-6230843901571104367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6370764775388150225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a4589037c41b9479cd202ee0d36779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []

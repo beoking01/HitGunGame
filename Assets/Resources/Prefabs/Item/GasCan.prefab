@@ -15,7 +15,9 @@ GameObject:
   - component: {fileID: -222769349451305688}
   - component: {fileID: 8448189555937612386}
   - component: {fileID: -1427569889639573626}
-  m_Layer: 0
+  - component: {fileID: 309278211868675754}
+  - component: {fileID: -2712487752644098502}
+  m_Layer: 6
   m_Name: GasCan
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -163,3 +165,32 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.56272686, y: 0.80872405, z: 0.2282689}
   m_Center: {x: 0.000574857, y: 0.4049791, z: -0.000000014901161}
+--- !u!114 &309278211868675754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3308128273212304377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22553fd63f2361041a6a888dbc9c247e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useEvents: 1
+  promtMessage: 
+--- !u!114 &-2712487752644098502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3308128273212304377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a4589037c41b9479cd202ee0d36779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []

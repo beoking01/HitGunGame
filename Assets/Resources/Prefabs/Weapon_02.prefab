@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 147346554812401107}
   - component: {fileID: 6954999235188494632}
   - component: {fileID: 5973881241302718398}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Weapon_02_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 307033426002211049}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GunBarrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,9 @@ GameObject:
   - component: {fileID: 7657735324587238177}
   - component: {fileID: 491627906165284829}
   - component: {fileID: 7192512924643837067}
-  m_Layer: 0
+  - component: {fileID: 7247117863956094950}
+  - component: {fileID: 7366884635588770495}
+  m_Layer: 6
   m_Name: Weapon_02
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -271,7 +273,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   worldGun: {fileID: 7192512924643837067}
-  pools: {fileID: 0}
 --- !u!114 &7192512924643837067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,6 +287,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 892052881ebed8346a2f3738ab134422, type: 2}
   gunBarrel: {fileID: 307033426002211049}
+--- !u!114 &7247117863956094950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5786097810451525583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22553fd63f2361041a6a888dbc9c247e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useEvents: 1
+  promtMessage: 
+--- !u!114 &7366884635588770495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5786097810451525583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a4589037c41b9479cd202ee0d36779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5836183803064680627
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +328,7 @@ GameObject:
   - component: {fileID: 1516268732596095734}
   - component: {fileID: 930050485265836895}
   - component: {fileID: 7276040947980279509}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Weapon_02_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,7 +437,7 @@ GameObject:
   - component: {fileID: 1114251928721181772}
   - component: {fileID: 452387194236927299}
   - component: {fileID: 6740514283268044895}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Weapon_02_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -516,7 +546,7 @@ GameObject:
   - component: {fileID: 7269915777578459166}
   - component: {fileID: 4674392848918489184}
   - component: {fileID: 4028996558340236304}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Weapon_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -625,7 +655,7 @@ GameObject:
   - component: {fileID: 8789160855611009177}
   - component: {fileID: 9008831621044463944}
   - component: {fileID: 1323172193802220165}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Weapon_02_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -734,7 +764,7 @@ GameObject:
   - component: {fileID: 7527377165839464338}
   - component: {fileID: 6934935622065414979}
   - component: {fileID: 1236245161484925392}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Weapon_02_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -843,7 +873,7 @@ GameObject:
   - component: {fileID: 4388394057938929558}
   - component: {fileID: 9160123578403175607}
   - component: {fileID: 3414436542776400382}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Weapon_02_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}

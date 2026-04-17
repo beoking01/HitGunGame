@@ -15,7 +15,9 @@ GameObject:
   - component: {fileID: 2195318413246064035}
   - component: {fileID: 4505241528999446026}
   - component: {fileID: -918266224918003763}
-  m_Layer: 0
+  - component: {fileID: -611390001889356274}
+  - component: {fileID: -4564388651907335840}
+  m_Layer: 6
   m_Name: Binoculars 1
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -163,3 +165,32 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.24844569, y: 0.1232397, z: 0.30878758}
   m_Center: {x: 0, y: 0.061989788, z: 0.028746806}
+--- !u!114 &-611390001889356274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2762118618844980087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22553fd63f2361041a6a888dbc9c247e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useEvents: 1
+  promtMessage: 
+--- !u!114 &-4564388651907335840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2762118618844980087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a4589037c41b9479cd202ee0d36779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2984087062438588010}
   - component: {fileID: 2072397264756412093}
   - component: {fileID: 8000606548106427307}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Weapon_01_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5025096390310709757}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GunBarrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,9 @@ GameObject:
   - component: {fileID: 6535613895235285305}
   - component: {fileID: 2212734919281756214}
   - component: {fileID: 7087747486556233267}
-  m_Layer: 0
+  - component: {fileID: -8405967967089192057}
+  - component: {fileID: 745498187802251588}
+  m_Layer: 6
   m_Name: Weapon_01
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -282,6 +284,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 18a17d7eee98b184781eec826ee8eba7, type: 2}
   gunBarrel: {fileID: 5025096390310709757}
+--- !u!114 &-8405967967089192057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4965438261709640327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22553fd63f2361041a6a888dbc9c247e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useEvents: 1
+  promtMessage: 
+--- !u!114 &745498187802251588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4965438261709640327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a4589037c41b9479cd202ee0d36779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6650470630134122455
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,7 +326,7 @@ GameObject:
   - component: {fileID: 3022981560694259401}
   - component: {fileID: 6046095663842076106}
   - component: {fileID: 1100694498583839617}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Weapon_01_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -425,7 +456,7 @@ GameObject:
   - component: {fileID: 4584101929267674204}
   - component: {fileID: 2952207158904981720}
   - component: {fileID: 8765265625684021415}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Weapon_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -535,7 +566,7 @@ GameObject:
   - component: {fileID: 9136702200399345792}
   - component: {fileID: 7237317679767152662}
   - component: {fileID: 2177772004781902724}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Weapon_01_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

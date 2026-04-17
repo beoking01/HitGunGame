@@ -16,7 +16,9 @@ GameObject:
   - component: {fileID: -7920826632048345446}
   - component: {fileID: -2617117577707098412}
   - component: {fileID: -1607501288894309374}
-  m_Layer: 0
+  - component: {fileID: -5353248908612724889}
+  - component: {fileID: 1608977399150689539}
+  m_Layer: 6
   m_Name: Medkit
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -177,3 +179,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healAmountOverride: 50
+--- !u!114 &-5353248908612724889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7888358981939075044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22553fd63f2361041a6a888dbc9c247e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useEvents: 1
+  promtMessage: 
+--- !u!114 &1608977399150689539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7888358981939075044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a4589037c41b9479cd202ee0d36779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []

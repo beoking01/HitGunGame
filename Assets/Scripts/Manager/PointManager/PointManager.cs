@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public interface IPointObserver
@@ -11,9 +13,16 @@ public class PointManager : MonoBehaviour
     public static PointManager Instance { get; private set; }
 
     private readonly List<IPointObserver> observers = new List<IPointObserver>();
-    [SerializeField] private float points = 0f;
+    [SerializeField] private float money = 0f;
 
-    public float Points => points;
+    [Header("Optional Disk Persistence")]
+    [SerializeField] private bool loadFromDiskOnAwake = true;
+    [SerializeField] private bool saveOnApplicationQuit = true;
+    [SerializeField] private bool saveOnPointsChanged;
+    [SerializeField] private string saveFileName = "money_state.json";
+
+    public float Points => money;
+    private string SavePath => Path.Combine(Application.persistentDataPath, saveFileName);
 
     private void Awake()
     {
@@ -25,6 +34,11 @@ public class PointManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        if (loadFromDiskOnAwake)
+        {
+            LoadFromDisk();
+        }
     }
 
     public void AddObserver(IPointObserver observer)
@@ -42,14 +56,55 @@ public class PointManager : MonoBehaviour
 
     public void AddPoints(float amount)
     {
-        points += amount;
+        money += amount;
         NotifyObservers();
+
+        if (saveOnPointsChanged)
+        {
+            SaveToDisk();
+        }
     }
 
     public void SetPoints(float newPoints)
     {
-        points = newPoints;
+        money = newPoints;
         NotifyObservers();
+
+        if (saveOnPointsChanged)
+        {
+            SaveToDisk();
+        }
+    }
+
+    public void SaveToDisk()
+    {
+        PointSavePayload payload = new PointSavePayload
+        {
+            money = money
+        };
+
+        string json = JsonUtility.ToJson(payload, true);
+        File.WriteAllText(SavePath, json);
+        Debug.Log("Saving PointState to disk at " + SavePath + " with money " + payload.money);
+    }
+
+    public void LoadFromDisk()
+    {
+        if (!File.Exists(SavePath))
+            return;
+
+        string json = File.ReadAllText(SavePath);
+        if (string.IsNullOrEmpty(json))
+            return;
+
+        PointSavePayload payload = JsonUtility.FromJson<PointSavePayload>(json);
+        if (payload == null)
+            return;
+
+        money = payload.money;
+        NotifyObservers();
+
+        Debug.Log("Loading PointState from disk at " + SavePath + " with money " + money);
     }
 
     private void NotifyObservers()
@@ -62,8 +117,23 @@ public class PointManager : MonoBehaviour
                 continue;
             }
 
-            observers[i].OnPointsChanged(points);
+            observers[i].OnPointsChanged(money);
         }
     }
-    public float GetPoints() { return points; }
+
+    private void OnApplicationQuit()
+    {
+        if (saveOnApplicationQuit)
+        {
+            SaveToDisk();
+        }
+    }
+
+    public float GetPoints() { return money; }
+
+    [Serializable]
+    private class PointSavePayload
+    {
+        public float money;
+    }
 }

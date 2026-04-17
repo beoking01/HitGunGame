@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5761995153500678845}
   - component: {fileID: 7408552818856861849}
   - component: {fileID: 6962363884123373163}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ToolBoxBottom.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 155364425983130521}
   - component: {fileID: 9148353626239477124}
   - component: {fileID: 3391762399225978889}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ToolBoxTop.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,9 @@ GameObject:
   - component: {fileID: 5385255838148651076}
   - component: {fileID: -7581769707496001824}
   - component: {fileID: 7885504853490201857}
-  m_Layer: 0
+  - component: {fileID: -6262597781971358852}
+  - component: {fileID: 1719772610625627357}
+  m_Layer: 6
   m_Name: ToolboxBlue
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -282,3 +284,32 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-6262597781971358852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8315060568077895520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22553fd63f2361041a6a888dbc9c247e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useEvents: 1
+  promtMessage: 
+--- !u!114 &1719772610625627357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8315060568077895520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a4589037c41b9479cd202ee0d36779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []

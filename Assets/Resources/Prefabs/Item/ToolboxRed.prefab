@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8747966813630628896}
   - component: {fileID: 3374790384706160142}
   - component: {fileID: 227582565826017299}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ToolBoxBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,9 @@ GameObject:
   - component: {fileID: 3652133921577777507}
   - component: {fileID: -2088272531544820871}
   - component: {fileID: -3817412013940633287}
-  m_Layer: 0
+  - component: {fileID: 5001016204387718616}
+  - component: {fileID: 8710771350806317267}
+  m_Layer: 6
   m_Name: ToolboxRed
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -196,6 +198,35 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5001016204387718616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4337980536727441498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22553fd63f2361041a6a888dbc9c247e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useEvents: 1
+  promtMessage: 
+--- !u!114 &8710771350806317267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4337980536727441498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a4589037c41b9479cd202ee0d36779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8971902320458703412
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +238,7 @@ GameObject:
   - component: {fileID: 1797552135026362562}
   - component: {fileID: 3735650478296609723}
   - component: {fileID: 7075972138700448994}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ToolBoxTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
