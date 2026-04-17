@@ -5,6 +5,7 @@ public class PlayerMotor : MonoBehaviour
 {
     private CharacterController controller;
     private Vector3 playerVelocity;
+    private float airControlMultiplier = 0.6f;
     private bool isMove = false;
     public bool isGrounded;
     public float speed = 5f;
@@ -35,7 +36,7 @@ public class PlayerMotor : MonoBehaviour
             {   
                 if(speed == 5)
                     SoundManager.Instance?.PlayLoop("Walk");
-                if (speed == 8)
+                if (speed == 7)
                     SoundManager.Instance?.PlayLoop("Run");
                 isMove = true;
             }
@@ -51,8 +52,9 @@ public class PlayerMotor : MonoBehaviour
         Vector3 moveDirection = Vector3.zero;
         moveDirection.x = input.x;
         moveDirection.z = input.y;
+        float currentSpeed = isGrounded ? speed : speed * airControlMultiplier;
 
-        controller.Move(transform.TransformDirection(moveDirection) * Time.deltaTime * speed);
+        controller.Move(transform.TransformDirection(moveDirection) * Time.deltaTime * currentSpeed);
         playerVelocity.y += gravirty * Time.deltaTime;
 
         if (isGrounded && playerVelocity.y < 0)
