@@ -15,4 +15,9 @@ public class PannelFieldList : MonoBehaviour
             allPanels[i].SetActive(i == panelIndex);
         }
     }
+    public void randomPanel()
+    {
+        int randomIndex = Random.Range(0, allPanels.Count);
+        OpenPanel(randomIndex);
+    }
 }
