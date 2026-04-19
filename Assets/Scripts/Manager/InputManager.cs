@@ -26,6 +26,7 @@ public class InputManager : MonoBehaviour
         onFoot.Jump.performed += ctx => motor.Jump();
         onFoot.Crouch.performed += ctx => motor.Crouch();
         onFoot.Sprint.performed += ctx => motor.Sprint();
+        onFoot.Pause.performed += ctx => gameManager.TogglePauseMenu();
 
         onFoot.Shoot.performed += ctx => itemActionController?.UsePrimary();
         onFoot.Reload.performed += ctx => itemActionController?.ReloadCurrent();

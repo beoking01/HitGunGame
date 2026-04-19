@@ -4,10 +4,7 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    [Header("UI References")]
-    public TextMeshProUGUI pointsText;
 
-    
     public void Quit()
     {
         SaveGameFacade.SaveAllPersistentStates();

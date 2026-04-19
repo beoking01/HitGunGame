@@ -4,6 +4,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     public GameObject gameOverUI;
+    public GameObject pauseMenuUI;
     // public GameObject gameWinUI;
     // public GameObject winUI;
     private bool gamePlay = true;
@@ -20,38 +21,60 @@ public class GameManager : MonoBehaviour
         // playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
         DontDestroyOnLoad(gameObject); // giữ lại qua scene
     }
+    public void Start()
+    {
+        SetCursorGameplay(true);
+    }
     public void GameOver()
     {
-        gamePlay = false;
+        SetGameplay(false);
         if (TruckStateManager.Instance != null)
         {
             TruckStateManager.Instance.State.Clear();
         }
-        Time.timeScale = 0f;
         gameOverUI.SetActive(true);
     }
     public bool isGamePlay()
     {
         return gamePlay;
     }
-    public void WinGame()
-    {
-        gamePlay = false;
-        Time.timeScale = 0f;
-        // gameWinUI.SetActive(true);
-    }
+    // public void WinGame()
+    // {
+    //     gamePlay = false;
+    //     Time.timeScale = 0f;
+    // }
     public void ContinueGame()
     {
-        gamePlay = true;
-        Time.timeScale = 1f;
+        SetGameplay(true);
         SaveGameFacade.SaveAllPersistentStates();
     }
-    // public void CheckConditionWin()
-    // {
-    //     if (playerInventory.showMoney() >= conditionWin)
-    //     {
-    //         WinGame();
-    //     }
-    // }
 
+    private void SetCursorGameplay(bool gameplay)
+    {
+        Cursor.lockState = gameplay ? CursorLockMode.Locked : CursorLockMode.None;
+        Cursor.visible = !gameplay;
+    }
+    public void SetGameplay(bool isPlaying)
+    {
+        gamePlay = isPlaying;
+        Time.timeScale = isPlaying ? 1f : 0f;
+        SetCursorGameplay(isPlaying);
+    }
+    public void TogglePauseMenu()
+    {
+        if (pauseMenuUI != null)
+        {
+            bool isActive = pauseMenuUI.activeSelf;
+            pauseMenuUI.SetActive(!isActive);
+            SetGameplay(isActive); // Nếu đang active thì chuyển sang gameplay, ngược lại thì pause
+        }
+    }
+    public void ContinueFromPause()
+    {
+        if (pauseMenuUI != null && pauseMenuUI.activeSelf)
+        {
+            pauseMenuUI.SetActive(false);
+            SetGameplay(true);
+        }
+    }
 }

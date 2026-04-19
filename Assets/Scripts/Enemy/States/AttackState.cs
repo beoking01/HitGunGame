@@ -55,16 +55,13 @@ public class AttackState : BaseState
         //Store refferent to the gun barrel
         Transform gunBarrel = enemy.gunBarrel;
 
-        // instantiate a new ballet 
-
-        // GameObject bullet = GameObject.Instantiate(Resources.Load("Prefabs/Bullet") as GameObject, gunBarrel.position, enemy.transform.rotation);
         GameObject bullet = enemy.pools.GetBullet();
         bullet.transform.position = gunBarrel.position;
         bullet.transform.rotation = enemy.transform.rotation;
         // caculate the direction to the Player
         Vector3 shootDirection = (enemy.Player.transform.position - gunBarrel.transform.position).normalized;
         // add force rigitbody of the bullet
-        bullet.GetComponent<Rigidbody>().linearVelocity = Quaternion.AngleAxis(Random.Range(-3f, 3f), Vector3.up) * shootDirection * 40;
+        bullet.GetComponent<Rigidbody>().linearVelocity = Quaternion.AngleAxis(Random.Range(-1f, 1f), Vector3.up) * shootDirection * 40;
         bullet.SetActive(true);
         shotTimer = 0;
     }
