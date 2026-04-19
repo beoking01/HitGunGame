@@ -7,5 +7,6 @@ public class EndOfLevel : MonoBehaviour
         SaveGameFacade.SaveAllPersistentStates();
         LoadingScene.SceneToLoad = sceneName;
         SceneManager.LoadScene("Loading");
+        GameManager.Instance.ContinueGame();
     }
 }

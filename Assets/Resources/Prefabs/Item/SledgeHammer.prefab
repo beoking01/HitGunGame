@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1445519072180033132}
   - component: {fileID: 3710935549286223536}
   - component: {fileID: 2716731659137877849}
+  - component: {fileID: 4786394674955249699}
   m_Layer: 6
   m_Name: SledgeHammer
   m_TagString: Item
@@ -194,3 +195,23 @@ MonoBehaviour:
   OnInteract:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4786394674955249699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6175472454394282540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47cd5e7619d056e4f99b2d5265e277c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
+  range: 2
+  radius: 0.35
+  cooldown: 0.4
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  attackOrigin: {fileID: 6843360195030145174}

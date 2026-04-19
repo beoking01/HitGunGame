@@ -3,7 +3,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    // public GameObject gameOverUI;
+    public GameObject gameOverUI;
     // public GameObject gameWinUI;
     // public GameObject winUI;
     private bool gamePlay = true;
@@ -19,14 +19,16 @@ public class GameManager : MonoBehaviour
         Instance = this;
         // playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
         DontDestroyOnLoad(gameObject); // giữ lại qua scene
-
-        
     }
     public void GameOver()
     {
         gamePlay = false;
+        if (TruckStateManager.Instance != null)
+        {
+            TruckStateManager.Instance.State.Clear();
+        }
         Time.timeScale = 0f;
-        // gameOverUI.SetActive(true);
+        gameOverUI.SetActive(true);
     }
     public bool isGamePlay()
     {
@@ -37,6 +39,12 @@ public class GameManager : MonoBehaviour
         gamePlay = false;
         Time.timeScale = 0f;
         // gameWinUI.SetActive(true);
+    }
+    public void ContinueGame()
+    {
+        gamePlay = true;
+        Time.timeScale = 1f;
+        SaveGameFacade.SaveAllPersistentStates();
     }
     // public void CheckConditionWin()
     // {

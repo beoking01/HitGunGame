@@ -49,6 +49,10 @@ public class HealthPlayer : MonoBehaviour
                 overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b, tempAlpha);
             }
         }
+        if (health <= 0)
+        {
+            GameManager.Instance.GameOver();
+        }
     }
 
     public void UpdateHealthUI()

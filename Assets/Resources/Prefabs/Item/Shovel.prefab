@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 4831580684502969984}
   - component: {fileID: 6307164672840919148}
   - component: {fileID: 8093911966612341719}
+  - component: {fileID: -7081031051754112138}
   m_Layer: 6
   m_Name: Shovel
   m_TagString: Item
@@ -194,3 +195,23 @@ MonoBehaviour:
   OnInteract:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-7081031051754112138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3405281253205256140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47cd5e7619d056e4f99b2d5265e277c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
+  range: 2
+  radius: 0.35
+  cooldown: 0.4
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  attackOrigin: {fileID: 2596938637961133430}
