@@ -4,10 +4,6 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    [Header("UI References")]
-    public TextMeshProUGUI pointsText;
-
-    
     public void Quit()
     {
         SaveGameFacade.SaveAllPersistentStates();
@@ -34,7 +30,12 @@ public class UIManager : MonoBehaviour
 
     public void GoToMenu()
     {
-        SaveGameFacade.SaveAllPersistentStates();
         SceneManager.LoadScene("Menu");
+    }
+    public void startBase()
+    {
+        string sceneName = "BaseCentral";
+        LoadingScene.SceneToLoad = sceneName;
+        SceneManager.LoadScene("Loading");
     }
 }
