@@ -2,7 +2,7 @@
 
 ![Game Header/Banner](docs/cover.gif)
 
-> Gợi ý: thay `docs/cover.gif` bằng ảnh cover hoặc GIF gameplay thực tế của bạn.
+> Demo: https://youtu.be/kGli-l1kEMs
 
 ## 📝 Giới thiệu
 Hit Gun Game là game FPS góc nhìn thứ nhất, kết hợp bắn súng sinh tồn với cơ chế loot, mua bán và quản lý vật phẩm giữa nhiều scene. Người chơi vừa chiến đấu với AI Enemy, vừa thu thập vật phẩm để bán lấy điểm và chuẩn bị trang bị cho lượt chơi tiếp theo. Vòng lặp chính đi qua các scene Menu -> BaseCentral -> Mission (Military) với hệ thống lưu trạng thái liên scene.
